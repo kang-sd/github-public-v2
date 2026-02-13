@@ -123,6 +123,19 @@
     .main-button:hover {
       background-color: #0056b3;
     }
+    .small-button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin: 4px;
+    }
+    .small-button:hover {
+      background-color: #0056b3;
+    }
     .header-row { background-color: #e0f7fa; color: #000; font-weight: bold; }
     .siseong-row { background-color: #fef9e7; color: #333; }
     .sigak-row { background-color: #f2f2f2; color: #333; }
@@ -315,15 +328,15 @@
 
       <p style="margin:6px 0; font-size:13px; color:#555;">
         ✉️ 이용 중 불편사항은 
-        <a href="/cdn-cgi/l/email-protection#becddbd1cbd0d9dad1fed9d3dfd7d290ddd1d3" style="color:#1976d2; text-decoration:none; font-weight:500;">
-          <span class="__cf_email__" data-cfemail="d0a3b5bfa5beb7b4bf90b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span>
+        <a href="mailto:seoungdo@gmail.com" style="color:#1976d2; text-decoration:none; font-weight:500;">
+          seoungdo@gmail.com
         </a> 으로 문의해 주세요.
       </p>
     </div>
   </div>
 
   <!-- ✅ Firebase 연동 스크립트 -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Firebase Functions API 설정
     const FIREBASE_API = 'https://us-central1-saju-app-bdd75.cloudfunctions.net';
 
@@ -587,7 +600,7 @@
       }
 
       try {
-        // 일반 사용자는 비밀번호 없이 검색 (Firebase에서 제한 없이 허용)
+        // 일반 사용자는 비밀번호 없이 검색
         const response = await fetch(
           `${FIREBASE_API}/searchPublic?name=${encodeURIComponent(searchName)}`
         );
@@ -648,4 +661,12 @@
         names.forEach(name => {
           const btn = document.createElement("button");
           btn.className = "small-button";
-          btn.style.cssText = "padding: 6px 12px; font-size: 14px; border-radius: 6px; background-color: #007b
+          btn.textContent = name;
+          btn.onclick = () => loadSavedResult(name);
+          nameBox.appendChild(btn);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
