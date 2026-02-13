@@ -1,0 +1,46 @@
+<!-- block1.html 🔹 블록 1: 표준 해석표 -->
+<div id="summary-block">
+  <h3 class="section-title">📄 사주팔자 표준 해석표</h3>
+  <p id="user-info" style="font-weight:bold; font-size:18px; text-align:center; margin-bottom:15px;">
+  </p>
+
+  
+  <div style="text-align:center; margin-bottom:20px;">
+  <button class="main-button" onclick="saveAllLuckBlocks()">💾 대운/세운/월운 저장</button>
+  <p id="save-status" style="margin-top:8px; color:#0056b3; font-size:14px;"></p>
+  </div>
+
+
+  <table style="background-color:white; color:black; border-radius:8px;">
+    <tr class="header-row"><th>사주팔자</th><th>시주</th><th>일주</th><th>월주</th><th>연주</th></tr>
+    <tr class="siseong-row"><td>천간십성격</td><td id="ck-s"></td><td id="ck-d"></td><td id="ck-m"></td><td id="ck-y"></td></tr>
+    <tr class="sigak-row"><td>천간십성</td><td id="tg-s"></td><td id="tg-d"></td><td id="tg-m"></td><td id="tg-y"></td></tr>
+    <tr><td>천간</td><td id="cg-s"></td><td id="cg-d"></td><td id="cg-m"></td><td id="cg-y"></td></tr>
+    <tr><td>지지</td><td id="jj-s"></td><td id="jj-d"></td><td id="jj-m"></td><td id="jj-y"></td></tr>
+    <tr class="sigak-row"><td>지지십성</td><td id="tj-s"></td><td id="tj-d"></td><td id="tj-m"></td><td id="tj-y"></td></tr>
+    <tr class="siseong-row"><td>지지십성격</td><td id="jk-s"></td><td id="jk-d"></td><td id="jk-m"></td><td id="jk-y"></td></tr>
+    <tr><td>지장간(십성)</td>
+  <td><div id="jg-s"></div><div id="jg-s-sib"></div></td> <!-- 시주 -->
+  <td><div id="jg-d"></div><div id="jg-d-sib"></div></td> <!-- 일주 -->
+  <td><div id="jg-m"></div><div id="jg-m-sib"></div></td> <!-- 월주 -->
+  <td><div id="jg-y"></div><div id="jg-y-sib"></div></td> <!-- 연주 -->
+</tr>
+  <!-- ✅ 십이운성(봉법) -->
+  <tr class="jijanggan-row"><td>십이운성(봉법)</td>
+  <td id="ws-bong-s"></td>
+  <td id="ws-bong-d"></td>
+  <td id="ws-bong-m"></td>
+  <td id="ws-bong-y"></td></tr>
+  <tr class="jijanggan-row"><td>십이운성(거법)</td>
+  <td id="ws-s"></td>
+  <td id="ws-d"></td>
+  <td id="ws-m"></td>
+  <td id="ws-y"></td></tr>
+
+   
+    <tr><td>오행개수</td><td colspan="4" id="cnt-elem"></td></tr>
+    <tr><td>신강신약</td><td colspan="4" id="strength-result"></td></tr>
+    <tr><td>십성개수</td><td colspan="4" id="cnt-sib"></td></tr>
+  </table>
+</div>
+

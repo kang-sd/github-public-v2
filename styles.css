@@ -1,0 +1,272 @@
+  
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #fff;
+      color: #000;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .section-title {
+  color: #222;
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;        /* ✅ 가운데 정렬 */
+  margin: 20px 0 16px;
+  padding: 10px;
+  background: #f5f8ff;       /* 연한 파란 배경 */
+  border-radius: 8px;
+  border-bottom: 3px solid #1976d2;  /* 강조선 */
+}
+/* 🔹 상위 탭 버튼 (block-switcher, block4-tab 등) */
+.block-btn-main {
+  background: #1976d2;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.block-btn-main:hover {
+  background: #1565c0;
+}
+.block-btn-main.active {
+  background: #0d47a1;
+}
+
+/* 🔹 하위 기능 버튼 (block3-wrapper 내부, block4 대운/세운 버튼) */
+.block-btn-sub {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.block-btn-sub:hover {
+  background: #dcedc8;   /* 연두빛 hover */
+  border-color: #8bc34a;
+}
+.block-btn-sub.active {
+  background: #2e7d32;   /* 진녹색 선택 */
+  color: #fff;
+  border-color: #1b5e20;
+}
+
+/* 🔹 버튼 그룹 간격 */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;        /* 버튼 간격 */
+  margin: 8px 0;   /* 위아래 여백 */
+}
+
+    /* 📌 사용자 입력 폼에 맞춘 입력 필드 / 드롭다운 개선 */
+.form-table {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 8px 12px;
+  font-size: 16px;
+}
+
+.form-table td {
+  padding: 6px;
+  vertical-align: middle;
+}
+
+.form-table input[type="text"],
+.form-table select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.form-table input[type="radio"],
+.form-table input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 5px;
+}
+
+.form-table label {
+  margin-right: 12px;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  .form-table {
+    font-size: 15px;
+  }
+
+  .form-table input[type="text"],
+  .form-table select {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+}
+    .main-container {
+      background-color: rgba(245, 245, 245, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 700px;
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    .main-button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+    .small-button {
+     padding: 6px 12px;
+     font-size: 14px;
+     border-radius: 6px;
+     background-color: #007bff;
+     color: white;
+     border: none;
+     cursor: pointer;
+    }
+   .small-button:hover {
+    background-color: #0056b3;
+    }
+     .main-button:hover {
+      background-color: #0056b3;
+    }
+    .header-row { background-color: #e0f7fa; color: #000; font-weight: bold; }
+    .siseong-row { background-color: #fef9e7; color: #333; }
+    .sigak-row { background-color: #f2f2f2; color: #333; }
+    .jijanggan-row { background-color: #e8f5e9; color: #222; }
+    .plain-row { background-color: #fff; color: #000; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .result-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .result-table th {
+    background-color: #f0f4f8;
+    color: #333;
+    text-align: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+  }
+
+  .result-table td {
+    background-color: #ffffff;
+    color: #222;
+    padding: 10px 12px;
+    text-align: left; /* ✅ 내용 왼쪽 정렬 */
+    vertical-align: top;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5;
+  }
+  .result-subtable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fdfdfd;
+  font-size: 14px;
+  }
+ .result-subtable th,
+ .result-subtable td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: left;
+  }
+  .result-block {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  #daewoon-container button,
+  #sewoon-container button {
+    margin: 6px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: #e0f2ff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .result-table tr:last-child td {
+    border-bottom: none;
+  }
+  #block4-tab-buttons {
+  display: flex !important;
+  }
+  .hidden {
+   display: none;
+  }
+  .hidden-option {
+  display: none;
+  }
+  .solar-guide {
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 8px;
+  }
+  .result-table tr:hover td {
+    background-color: #f9f9f9;
+      }
+    .ohang-mok { background-color: #4caf50; color: white; }
+    .ohang-hwa { background-color: #f44336; color: white; }
+    .ohang-to { background-color: #ffeb3b; color: white; }
+    .ohang-geum { background-color: #ffffff; color: black; }
+    .ohang-su { background-color: #000000; color: white; }
+  
+</head>

@@ -1,0 +1,144 @@
+<!-- index.html - GitHub Public -->
+<!-- 🔓 공개: HTML 구조 + CSS + 입력폼 -->
+<!-- 🔒 비공개: include 부분은 Firebase에서 동적 로드 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>사주팔자</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ✅ CSS는 외부 파일로 분리 -->
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <div class="main-container">
+
+    <!-- ✅ 입력 폼 영역 - 여기는 공개 -->
+    <div id="form-section">
+      <!-- block1.html과 입력폼 내용이 들어갈 자리 -->
+      <div id="block1-container"></div>
+      <div id="form-container"></div>
+    </div>
+
+    <!-- ✅ 결과 표시 영역 - 빈 컨테이너 -->
+    <div id="result-section" style="display:none; margin-top:30px;">
+      <!-- Firebase에서 block2, block3 동적 로드 -->
+      <div id="block2-container"></div>
+      <div id="block3-container"></div>
+    </div>
+
+    <!-- ✅ 하단 안내문구 - 공개 -->
+    <div id="footer-message" style="margin-top:50px; font-size:13px; color:#444; text-align:center; line-height:1.8; 
+         border-top:2px solid #1976d2; padding:18px; background:#f9fbff; border-radius:8px;">
+      
+      <p style="font-size:14px; font-weight:bold; color:#1976d2; margin-bottom:8px;">
+        📌 이용 안내
+      </p>
+
+      <p style="margin:6px 0;">
+        본 사주 사주팔자 프로그램은 <b style="color:#000;">kangseoungdo</b>에 저작권이 있으며,<br>
+        <span style="color:#d32f2f; font-weight:600;">상업적 사용 및 무단 배포는 금지</span>되어 있습니다.
+      </p>
+
+      <p style="margin:6px 0;">
+        입력된 개인정보(이름, 생년월일, 출생지 등)는 오직 <b>해석 목적</b>으로만 사용되며,<br>
+        다른 용도로 저장·활용되지 않습니다.
+      </p>
+
+      <p style="margin:6px 0; font-style:italic; color:#666;">
+        ⚠️ 본 해석 결과는 참고용으로 제공되며, 법적 효력이나 절대적 진실을 보장하지 않습니다.<br>
+        모든 판단과 책임은 이용자 본인에게 있습니다.
+      </p>
+
+      <p style="margin:6px 0;">
+        본 프로그램은 PC, 모바일, 태블릿 등 <b>어느 환경에서든 사용 가능</b>합니다.<br>
+        다만, 화면 크기와 가독성을 고려하여 <b style="color:#1976d2;">태블릿 사용을 권장</b>합니다.
+      </p>
+
+      <p style="margin:6px 0; font-size:13px; color:#555;">
+        ✉️ 이용 중 불편사항은 
+        <a href="mailto:seoungdo@gmail.com" style="color:#1976d2; text-decoration:none; font-weight:500;">
+          seoungdo@gmail.com
+        </a> 으로 문의해 주세요.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ✅ Firebase 연동 스크립트 -->
+  <script>
+    // Firebase Functions API 설정
+    const FIREBASE_API = 'https://us-central1-saju-app.cloudfunctions.net';
+
+    // 페이지 로드 시 템플릿 동적 로드
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // 1. block1 로드 (소개)
+        const block1 = await fetch(`${FIREBASE_API}/getTemplate?name=block1`);
+        document.getElementById('block1-container').innerHTML = await block1.text();
+
+        // 2. 입력 폼 로드
+        const formHTML = await fetch(`${FIREBASE_API}/getTemplate?name=input-form`);
+        document.getElementById('form-container').innerHTML = await formHTML.text();
+
+        // 3. 스크립트 로드 (script_ui, script_block*)
+        await loadScripts();
+
+      } catch (error) {
+        console.error('템플릿 로드 실패:', error);
+        alert('페이지를 불러오는 중 오류가 발생했습니다.');
+      }
+    });
+
+    // 스크립트 동적 로드 함수
+    async function loadScripts() {
+      const scripts = [
+        'script_ui',
+        'script_block3',
+        'script_block3_1',
+        'script_block3_2',
+        'script_block3_4',
+        'script_block4',
+        'script_block4_Daewoon',
+        'script_block4_sewoon',
+        'script_block6',
+        'script_block7'
+      ];
+
+      for (const scriptName of scripts) {
+        const response = await fetch(`${FIREBASE_API}/getTemplate?name=${scriptName}`);
+        const scriptHTML = await response.text();
+        
+        // <script> 태그 추출 및 실행
+        const div = document.createElement('div');
+        div.innerHTML = scriptHTML;
+        const scriptTags = div.querySelectorAll('script');
+        
+        scriptTags.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          document.body.appendChild(newScript);
+        });
+      }
+    }
+
+    // 사주 계산 함수 (Firebase Functions 호출)
+    async function calculateSaju(formData) {
+      const response = await fetch(`${FIREBASE_API}/calculateSaju`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      return await response.json();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1944 @@
+<!-- block2.html 블록 2: 해석 버튼 영역 -->
+<!-- ✅ 상단 탭 전환 버튼 -->
+<div id="block-switcher" class="button-group">
+  <button class="block-btn-main" onclick="showBlock3()">🔙 오행/십성/운성 해석</button>
+  <button class="block-btn-main" onclick="showBlock4()">📦 대운/세운/월운 해석</button>
+  <button class="block-btn-main" onclick="showBlock5()">📚 참고자료</button>
+</div>
+<!-- ✅ block3-wrapper: 오행/십성/운성 해석 -->
+<div id="block3-wrapper" style="display: block;">
+  <div id="button-block" class="button-group">
+    <button class="block-btn-sub" onclick="showBlock3Tab('ilju')">🌳 일주</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('ohang')">🧬 오행</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('ganji')">🌗 간지 해설</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('wonju')">⚡ 월주충합</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('sibsung')">🔮 십성별 위치 해설</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('cheonganhap')">🌗 천간충합</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('jijihap')">🌀 지지충합</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('woljiilgan')">📜 월지일간</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('gyeokguk')">📘 격국론</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('unseong')">🧭 십이운성</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('ilgansibsungyu')">📒 일간별십성과유</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('myungwoon')">🌌 명운합충</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('iljuwolji')">🌕 일주월지해석</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('jijisaengwangmyo')">🌿 지지생왕묘</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('myungwoonchung')">⚡ 명운충</button>
+    <button class="block-btn-sub" onclick="showBlock3Tab('sinsal')">🌟 신살결과</button>
+    </div>  
+  
+<div id="analysis-content" style="
+  margin-top:20px;
+  padding:16px;
+  border:1px dashed #ccc;
+  border-radius:12px;
+  background:#f9f9f9;
+  min-height:80px;
+  color:#333;
+  font-size:15px;
+  line-height:1.5;
+">
+ <div id="block3-ilju" style="display: none;">
+  <h3>🌿 일간 오행 해석</h3>
+  <table class="result-table">
+    <tr><th>일간</th><td id="ilju-ilgan"></td></tr>
+    <tr><th>오행</th><td id="ilju-ohaeng"></td></tr>
+    <tr><th>자의</th><td id="ilju-season"></td></tr>
+    <tr><th>성정</th><td id="ilju-direction"></td></tr>
+    <tr><th>희기(喜忌)</th><td id="ilju-trait"></td></tr>
+    <tr><th>음양적관점</th><td id="ilju-adv"></td></tr>
+    <tr><th>오행적관점</th><td id="ilju-disadv"></td></tr>
+    <tr><th>물상</th><td id="ilju-fit"></td></tr>
+    <tr><th>천간의관계</th><td id="ilju-bowan"></td></tr>
+  </table>
+
+  <h4 style="margin:24px 0 8px;">📖 일간 전용 해석</h4>
+  <table class="result-table">
+    <tr><th>오행</th><td id="ilgan-ohang-ohaeng"></td></tr>
+    <tr><th>양/음</th><td id="ilgan-ohang-yangum"></td></tr>
+    <tr><th>상징/물상</th><td id="ilgan-ohang-symbol"></td></tr>
+    <tr><th>성향 설명</th><td id="ilgan-ohang-trait"></td></tr>
+    <tr><th>장점</th><td id="ilgan-ohang-adv"></td></tr>
+    <tr><th>단점</th><td id="ilgan-ohang-disadv"></td></tr>
+    <tr><th>직업/적성</th><td id="ilgan-ohang-fit"></td></tr>
+    <tr><th>보완 오행</th><td id="ilgan-ohang-bowan"></td></tr>
+  </table>
+
+  <h4>🧭 일주 해석</h4>
+<table class="result-table">
+  <tr>
+    <th>일간</th><td id="ilju-ilgan2"></td>
+    <th>일지</th><td id="ilju-ilji2"></td>
+  </tr>
+  <tr><th>지장간</th><td colspan="3" id="ilju-jijanggan"></td></tr>
+  <tr><th>핵심 키워드</th><td colspan="3" id="ilju-core"></td></tr>
+  <tr><th>인성 구조</th><td colspan="3" id="ilju-inseong"></td></tr>
+  <tr><th>주요 성향</th><td colspan="3" id="ilju-trait2"></td></tr>
+  <tr><th>단점 / 주의점</th><td colspan="3" id="ilju-disadv2"></td></tr>
+  <tr><th>직업 / 능력</th><td colspan="3" id="ilju-job"></td></tr>
+  <tr><th>기타 특징</th><td colspan="3" id="ilju-etc"></td></tr>
+  <tr><th>성격 및 특성</th><td colspan="3" id="ilju-fulltext"></td></tr>
+</table>
+
+</div>
+
+<div id="block3-ohang" style="display: none;">
+  <h3>🧬 오행 갯수 해석</h3>
+  <table class="result-table">
+    <tr><th>건강</th><td id="ohang-health"></td></tr>
+    <tr><th>사회</th><td id="ohang-society"></td></tr>
+    <tr><th>경제</th><td id="ohang-economy"></td></tr>
+    <tr><th>이성</th><td id="ohang-love"></td></tr>
+    <tr><th>성격 경향</th><td id="ohang-trait"></td></tr>
+    <tr><th>의사결정</th><td id="ohang-decision"></td></tr>
+    <tr><th>스트레스</th><td id="ohang-stress"></td></tr>
+    <tr><th>직업 적성</th><td id="ohang-job"></td></tr>
+    <tr><th>에너지 흐름</th><td id="ohang-energy"></td></tr>
+    <tr><th>불균형</th><td id="ohang-unbalance"></td></tr>
+    <tr><th>문제점</th><td id="ohang-problem"></td></tr>
+    <tr><th>원인</th><td id="ohang-cause"></td></tr>
+    <tr><th>해결</th><td id="ohang-solution"></td></tr>
+    <tr><th>삶의 적용 예시</th><td id="ohang-example"></td></tr>
+  </table>
+
+  
+  <h3>🧬 일간 오행 해석</h3>
+
+<!-- 오행 과다 -->
+<table class="result-table" style="margin-bottom:20px;">
+  <tr>
+    <th>일간</th>
+    <td id="ilgan"></td>
+  </tr>
+  <tr>
+    <th>오행 과다</th>
+    <td>
+      <select id="ohaeng-extra-many" onchange="renderIlganOhaengExtra()">
+        <option value="">-- 선택하세요 --</option>
+        <option value="木多">木多</option>
+        <option value="火多">火多</option>
+        <option value="土多">土多</option>
+        <option value="金多">金多</option>
+        <option value="水多">水多</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>결과</th>
+    <td id="ilgan-ohaeng-extra-many" style="min-width:300px; color:#333;"></td>
+  </tr>
+</table>
+
+<!-- 오행 少/無 -->
+<table class="result-table">
+  <tr>
+    <th>일간</th>
+    <td id="ilgan2"></td>
+  </tr>
+  <tr>
+    <th>오행 少/無</th>
+    <td>
+      <select id="ohaeng-extra-lack" onchange="renderIlganOhaengExtra()">
+        <option value="">-- 선택하세요 --</option>
+        <option value="木 少/無">木 少/無</option>
+        <option value="火 少/無">火 少/無</option>
+        <option value="土 少/無">土 少/無</option>
+        <option value="金 少/無">金 少/無</option>
+        <option value="水 少/無">水 少/無</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>결과</th>
+    <td id="ilgan-ohaeng-extra-lack" style="min-width:300px; color:#333;"></td>
+  </tr>
+</table>
+
+<h3>🧬 신강/신약 해석</h3>
+  <table class="result-table">
+  <tr><th>신강 판정</th><td id="shingang-type"></td></tr>
+  <tr><th>의미</th><td id="shingang-meaning"></td></tr>
+  <tr><th>특징</th><td id="shingang-trait"></td></tr>
+  <tr><th>용신</th><td id="shingang-yongsin"></td></tr>
+  </table>
+
+
+</div>
+
+<!-- 간지 해설 탭 -->
+<!-- 간지 해석 탭 -->
+<!-- 간지 해석 탭 -->
+<div id="block3-ganji" style="display: none;">
+  <h3>🧬 간지 해석</h3>
+  <table class="result-table">
+  <!-- 연간/연지 -->
+  <tr>
+    <th>연간</th><td id="ganji-y-gan"></td>
+    <th>연지</th><td id="ganji-y-ji"></td>
+  </tr>
+  <tr><th>지장간</th><td colspan="3" id="ganji-y-jijanggan"></td></tr>
+  <tr><th>기본 구도</th><td colspan="3" id="ganji-y-basic"></td></tr>
+  <tr><th>작용 관계</th><td colspan="3" id="ganji-y-relation"></td></tr>
+  <tr><th>길흉 판단</th><td colspan="3" id="ganji-y-luck"></td></tr>
+  <tr><th>성격 특징</th><td colspan="3" id="ganji-y-trait"></td></tr>
+  <tr><th>수기 작용</th><td colspan="3" id="ganji-y-core"></td></tr>
+
+  <!-- 월간/월지 -->
+  <tr>
+    <th>월간</th><td id="ganji-m-gan"></td>
+    <th>월지</th><td id="ganji-m-ji"></td>
+  </tr>
+  <tr><th>지장간</th><td colspan="3" id="ganji-m-jijanggan"></td></tr>
+  <tr><th>기본 구도</th><td colspan="3" id="ganji-m-basic"></td></tr>
+  <tr><th>작용 관계</th><td colspan="3" id="ganji-m-relation"></td></tr>
+  <tr><th>길흉 판단</th><td colspan="3" id="ganji-m-luck"></td></tr>
+  <tr><th>성격 특징</th><td colspan="3" id="ganji-m-trait"></td></tr>
+  <tr><th>수기 작용</th><td colspan="3" id="ganji-m-core"></td></tr>
+
+  <!-- 일간/일지 -->
+  <tr>
+    <th>일간</th><td id="ganji-d-gan"></td>
+    <th>일지</th><td id="ganji-d-ji"></td>
+  </tr>
+  <tr><th>지장간</th><td colspan="3" id="ganji-d-jijanggan"></td></tr>
+  <tr><th>기본 구도</th><td colspan="3" id="ganji-d-basic"></td></tr>
+  <tr><th>작용 관계</th><td colspan="3" id="ganji-d-relation"></td></tr>
+  <tr><th>길흉 판단</th><td colspan="3" id="ganji-d-luck"></td></tr>
+  <tr><th>성격 특징</th><td colspan="3" id="ganji-d-trait"></td></tr>
+  <tr><th>수기 작용</th><td colspan="3" id="ganji-d-core"></td></tr>
+
+  <!-- 시간/시지 -->
+  <tr>
+    <th>시간</th><td id="ganji-h-gan"></td>
+    <th>시지</th><td id="ganji-h-ji"></td>
+  </tr>
+  <tr><th>지장간</th><td colspan="3" id="ganji-h-jijanggan"></td></tr>
+  <tr><th>기본 구도</th><td colspan="3" id="ganji-h-basic"></td></tr>
+  <tr><th>작용 관계</th><td colspan="3" id="ganji-h-relation"></td></tr>
+  <tr><th>길흉 판단</th><td colspan="3" id="ganji-h-luck"></td></tr>
+  <tr><th>성격 특징</th><td colspan="3" id="ganji-h-trait"></td></tr>
+  <tr><th>수기 작용</th><td colspan="3" id="ganji-h-core"></td></tr>
+</table>
+
+</div>
+
+
+
+<!-- 월주 해석 영역 -->
+<div id="block3-wonju" style="display: none;">
+  <h3>🐯 월지 해석</h3>
+  <table class="result-table">
+    <tr><th>월지</th><td id="wonju-wolji"></td></tr>
+<tr><th>기본사항</th><td id="wonju-animal"></td></tr>
+<tr><th>특징</th><td id="wonju-trait"></td></tr>
+<tr><th>계절</th><td id="wonju-season"></td></tr>
+<tr><th>절기</th><td id="wonju-term"></td></tr>
+<tr><th>직업적 성향</th><td id="wonju-job"></td></tr>
+<tr><th>오행적 관점</th><td id="wonju-ohang"></td></tr>
+<tr><th>계절적 관점</th><td id="wonju-gyeseol"></td></tr>
+  </table>
+
+
+
+
+  <!-- 🔽 추가: 월간/월지로 매칭된 월주 해설 테이블 -->
+  <!-- 📌 월간·월지 간지별 해설 테이블 -->
+<h4 style="margin-top: 24px;">🌕 월지 + 일지 해설</h4>
+<table class="result-table">
+  <tr><th>월지</th><td id="wonju-ilji-wolji"></td></tr>
+  <tr><th>일지</th><td id="wonju-ilji-ilji"></td></tr>
+  <tr><th>해설</th><td id="wonju-ilji-haeseol"></td></tr>
+  <tr><th>운</th><td id="wonju-ilji-un"></td></tr>
+  <tr><th>문제유형</th><td id="wonju-ilji-munje"></td></tr>
+  <tr><th>보완요소</th><td id="wonju-ilji-bo"></td></tr>
+  <tr><th>중요작용판단</th><td id="wonju-ilji-judge"></td></tr>
+</table>
+<h4 style="margin-top: 24px;">🌘 월지 + 시지 해설</h4>
+<table class="result-table">
+  <tr><th>월지</th><td id="wonju-siji-wolji"></td></tr>
+  <tr><th>시지</th><td id="wonju-siji-siji"></td></tr>
+  <tr><th>해설</th><td id="wonju-siji-haeseol"></td></tr>
+  <tr><th>운</th><td id="wonju-siji-un"></td></tr>
+  <tr><th>문제유형</th><td id="wonju-siji-munje"></td></tr>
+  <tr><th>보완요소</th><td id="wonju-siji-bo"></td></tr>
+  <tr><th>중요작용판단</th><td id="wonju-siji-judge"></td></tr>
+</table>
+<h4 style="margin-top: 24px;">🌑 월지 + 연지 해설</h4>
+<table class="result-table">
+  <tr><th>월지</th><td id="wonju-yeonji-wolji"></td></tr>
+  <tr><th>연지</th><td id="wonju-yeonji-yeonji"></td></tr>
+  <tr><th>해설</th><td id="wonju-yeonji-haeseol"></td></tr>
+  <tr><th>운</th><td id="wonju-yeonji-un"></td></tr>
+  <tr><th>문제유형</th><td id="wonju-yeonji-munje"></td></tr>
+  <tr><th>보완요소</th><td id="wonju-yeonji-bo"></td></tr>
+  <tr><th>중요작용판단</th><td id="wonju-yeonji-judge"></td></tr>
+</table>
+
+<h4 style="margin-top: 24px;">📌 월지 + 일간 + 시간 + 시지 해설 (일월시주)</h4>
+<table class="result-table">
+  <!-- 첫 줄: 월지, 일간, 시간, 시지 (각각 2칸씩 → 총 8칸) -->
+  <tr>
+    <th>월지</th><td id="ilwolsiju-wolji"></td>
+    <th>일간</th><td id="ilwolsiju-ilgan"></td>
+    <th>시간</th><td id="ilwolsiju-sigan"></td>
+    <th>시지</th><td id="ilwolsiju-siji"></td>
+  </tr>
+  <tr>
+  <th>월지 십성</th><td colspan="1" id="ilwolsiju-wolji-sibsung"></td>
+  <th>일간 십성</th><td colspan="1" id="ilwolsiju-ilgan-sibsung"></td>
+  <th>시간 십성</th><td colspan="1" id="ilwolsiju-sigan-sibsung"></td>
+  <th>시지 십성</th><td colspan="1" id="ilwolsiju-siji-sibsung"></td>
+</tr>
+
+  <!-- 아래 해석 부분 -->
+  <tr><th>시지 지장간</th><td colspan="7" id="ilwolsiju-jigangkan"></td></tr>
+<tr><th>시지 십성</th><td colspan="7" id="ilwolsiju-sibsung"></td></tr>
+<tr><th>미래운</th><td colspan="7" id="ilwolsiju-future"></td></tr>
+<tr><th>자녀운</th><td colspan="7" id="ilwolsiju-children"></td></tr>
+<tr><th>말년운</th><td colspan="7" id="ilwolsiju-oldage"></td></tr>
+<tr><th>건강운</th><td colspan="7" id="ilwolsiju-health"></td></tr>
+<tr><th>해설</th><td colspan="7" id="ilwolsiju-haeseol"></td></tr>
+</table>
+
+</div>
+
+<!-- 🌟 십성간지 해설 블록 -->
+<!-- 🌟 십성간지 해설 블록 -->
+<div id="block3-sibsung" style="display: none;">
+  <h3>🔮 십성간지 해설</h3>
+  <table class="result-table">
+    <thead>
+      <tr><th>위치</th><th>십성</th><th>해설</th></tr>
+    </thead>
+    <tbody>
+      <tr><th>연간</th><td id="sibsung-ganji-연간"></td><td id="sibsung-ganji-연간-text"></td></tr>
+      <tr><th>연지</th><td id="sibsung-ganji-연지"></td><td id="sibsung-ganji-연지-text"></td></tr>
+      <tr><th>월간</th><td id="sibsung-ganji-월간"></td><td id="sibsung-ganji-월간-text"></td></tr>
+      <tr><th>월지</th><td id="sibsung-ganji-월지"></td><td id="sibsung-ganji-월지-text"></td></tr>
+      <tr><th>일지</th><td id="sibsung-ganji-일지"></td><td id="sibsung-ganji-일지-text"></td></tr>
+      <tr><th>시간</th><td id="sibsung-ganji-시간"></td><td id="sibsung-ganji-시간-text"></td></tr>
+      <tr><th>시지</th><td id="sibsung-ganji-시지"></td><td id="sibsung-ganji-시지-text"></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🧭 천지십성 조합 해석</h3>
+  <table class="result-table">
+    <thead>
+      <tr>
+        <th>위치</th>
+        <th>천간</th>
+        <th>지지</th>
+        <th>해석 요약</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 연 -->
+      <tr>
+        <td>연간 + 연지</td>
+        <td id="cheonji-gan-연"></td>
+        <td id="cheonji-ji-연"></td>
+        <td id="cheonji-summary-연"></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding:0;">
+          <table class="result-subtable">
+            <thead>
+              <tr>
+                <th>보완 요소</th>
+                <th>가정·인연</th>
+                <th>사회생활</th>
+                <th>조언</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="cheonji-fix-연"></td>
+                <td id="cheonji-family-연"></td>
+                <td id="cheonji-society-연"></td>
+                <td id="cheonji-tip-연"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+      <!-- 월 -->
+      <tr>
+        <td>월간 + 월지</td>
+        <td id="cheonji-gan-월"></td>
+        <td id="cheonji-ji-월"></td>
+        <td id="cheonji-summary-월"></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding:0;">
+          <table class="result-subtable">
+            <thead>
+              <tr>
+                <th>보완 요소</th>
+                <th>가정·인연</th>
+                <th>사회생활</th>
+                <th>조언</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="cheonji-fix-월"></td>
+                <td id="cheonji-family-월"></td>
+                <td id="cheonji-society-월"></td>
+                <td id="cheonji-tip-월"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+      <!-- 일 -->
+      <tr>
+        <td>일간 + 일지</td>
+        <td id="cheonji-gan-일"></td>
+        <td id="cheonji-ji-일"></td>
+        <td id="cheonji-summary-일"></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding:0;">
+          <table class="result-subtable">
+            <thead>
+              <tr>
+                <th>보완 요소</th>
+                <th>가정·인연</th>
+                <th>사회생활</th>
+                <th>조언</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="cheonji-fix-일"></td>
+                <td id="cheonji-family-일"></td>
+                <td id="cheonji-society-일"></td>
+                <td id="cheonji-tip-일"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+      <!-- 시 -->
+      <tr>
+        <td>시간 + 시지</td>
+        <td id="cheonji-gan-시"></td>
+        <td id="cheonji-ji-시"></td>
+        <td id="cheonji-summary-시"></td>
+      </tr>
+      <tr>
+        <td colspan="4" style="padding:0;">
+          <table class="result-subtable">
+            <thead>
+              <tr>
+                <th>보완 요소</th>
+                <th>가정·인연</th>
+                <th>사회생활</th>
+                <th>조언</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="cheonji-fix-시"></td>
+                <td id="cheonji-family-시"></td>
+                <td id="cheonji-society-시"></td>
+                <td id="cheonji-tip-시"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+
+ <div id="block3-cheonganhap" style="display: none;">
+  <h3>🌗 천간 충합 해석</h3>
+
+  <!-- 🔷 연간과 월간 -->
+  <h4>🔷 연간과 월간</h4>
+  <table class="result-table" style="table-layout: fixed; width: 100%; word-break: break-word;">
+    <tr>
+      <th>천간1</th><td id="cheonganhap-yw-gan1"></td>
+      <th>천간2</th><td id="cheonganhap-yw-gan2"></td>
+      <th>유형</th><td id="cheonganhap-yw-type"></td>
+    </tr>
+    <tr><th>키워드</th><td colspan="5" id="cheonganhap-yw-keyword"></td></tr>
+    <tr><th>설명</th><td colspan="5" id="cheonganhap-yw-explain"></td></tr>
+    <tr><th>대인관계</th><td colspan="5" id="cheonganhap-yw-relation"></td></tr>
+    <tr><th>사회관계</th><td colspan="5" id="cheonganhap-yw-social"></td></tr>
+    <tr><th>물상</th><td colspan="5" id="cheonganhap-yw-symbol"></td></tr>
+    <tr><th>해석 요약</th><td colspan="5" id="cheonganhap-yw-summary"></td></tr>
+    <tr><th>보완 요소</th><td colspan="5" id="cheonganhap-yw-supplement"></td></tr>
+    <tr><th>가정·인연</th><td colspan="5" id="cheonganhap-yw-family"></td></tr>
+    <tr><th>사회생활</th><td colspan="5" id="cheonganhap-yw-society"></td></tr>
+    <tr><th>조언형 마무리</th><td colspan="5" id="cheonganhap-yw-tip"></td></tr>
+  </table>
+
+  <!-- 🔷 월간과 일간 -->
+  <h4>🔷 월간과 일간</h4>
+  <table class="result-table" style="table-layout: fixed; width: 100%; word-break: break-word;">
+    <tr>
+      <th>천간1</th><td id="cheonganhap-mi-gan1"></td>
+      <th>천간2</th><td id="cheonganhap-mi-gan2"></td>
+      <th>유형</th><td id="cheonganhap-mi-type"></td>
+    </tr>
+    <tr><th>키워드</th><td colspan="5" id="cheonganhap-mi-keyword"></td></tr>
+    <tr><th>설명</th><td colspan="5" id="cheonganhap-mi-explain"></td></tr>
+    <tr><th>대인관계</th><td colspan="5" id="cheonganhap-mi-relation"></td></tr>
+    <tr><th>사회관계</th><td colspan="5" id="cheonganhap-mi-social"></td></tr>
+    <tr><th>물상</th><td colspan="5" id="cheonganhap-mi-symbol"></td></tr>
+    <tr><th>해석 요약</th><td colspan="5" id="cheonganhap-mi-summary"></td></tr>
+    <tr><th>보완 요소</th><td colspan="5" id="cheonganhap-mi-supplement"></td></tr>
+    <tr><th>가정·인연</th><td colspan="5" id="cheonganhap-mi-family"></td></tr>
+    <tr><th>사회생활</th><td colspan="5" id="cheonganhap-mi-society"></td></tr>
+    <tr><th>조언형 마무리</th><td colspan="5" id="cheonganhap-mi-tip"></td></tr>
+  </table>
+
+  <!-- 🔷 일간과 시간 -->
+  <h4>🔷 일간과 시간</h4>
+ <table class="result-table" style="table-layout: fixed; width: 100%; word-break: break-word;">
+    <tr>
+      <th>천간1</th><td id="cheonganhap-ds-gan1"></td>
+      <th>천간2</th><td id="cheonganhap-ds-gan2"></td>
+      <th>유형</th><td id="cheonganhap-ds-type"></td>
+    </tr>
+    <tr><th>키워드</th><td colspan="5" id="cheonganhap-ds-keyword"></td></tr>
+    <tr><th>설명</th><td colspan="5" id="cheonganhap-ds-explain"></td></tr>
+    <tr><th>대인관계</th><td colspan="5" id="cheonganhap-ds-relation"></td></tr>
+    <tr><th>사회관계</th><td colspan="5" id="cheonganhap-ds-social"></td></tr>
+    <tr><th>물상</th><td colspan="5" id="cheonganhap-ds-symbol"></td></tr>
+    <tr><th>해석 요약</th><td colspan="5" id="cheonganhap-ds-summary"></td></tr>
+    <tr><th>보완 요소</th><td colspan="5" id="cheonganhap-ds-supplement"></td></tr>
+    <tr><th>가정·인연</th><td colspan="5" id="cheonganhap-ds-family"></td></tr>
+    <tr><th>사회생활</th><td colspan="5" id="cheonganhap-ds-society"></td></tr>
+    <tr><th>조언형 마무리</th><td colspan="5" id="cheonganhap-ds-tip"></td></tr>
+  </table>
+</div>
+
+<div id="block3-jijihap" style="display:none; margin-top:20px;">
+
+  <!-- 연지 + 월지 -->
+  <!-- 연지 + 월지 -->
+<h4>🔷 연지와 월지</h4>
+<table class="result-table" style="table-layout: fixed; width: 100%; word-break: break-word;">
+  <tr><th>지지1</th><td id="jijihap-ym-ji1"></td><th>지지2</th><td id="jijihap-ym-ji2"></td><th>유형</th><td id="jijihap-ym-type"></td></tr>
+  <tr><th>속성/설명</th><td colspan="5" id="jijihap-ym-attributeDescription"></td></tr> 
+  <tr><th>성향요약</th><td colspan="5" id="jijihap-ym-summary"></td></tr>
+  <tr><th>키워드</th><td colspan="5" id="jijihap-ym-keyword"></td></tr>
+  <tr><th>대인관계</th><td colspan="5" id="jijihap-ym-relation"></td></tr>
+  <tr><th>사회관계</th><td colspan="5" id="jijihap-ym-social"></td></tr>
+  <tr><th>상징적 설명</th><td colspan="5" id="jijihap-ym-symbol"></td></tr>
+  
+</table>
+
+<!-- 월지 + 일지 -->
+<h4>🔷 월지와 일지</h4>
+<table class="result-table" style="table-layout: fixed; width: 100%; word-break: break-word;">
+  <tr><th>지지1</th><td id="jijihap-md-ji1"></td><th>지지2</th><td id="jijihap-md-ji2"></td><th>유형</th><td id="jijihap-md-type"></td></tr>
+  <tr><th>속성/설명</th><td colspan="5" id="jijihap-md-attributeDescription"></td></tr>
+  <tr><th>성향요약</th><td colspan="5" id="jijihap-md-summary"></td></tr>
+  <tr><th>키워드</th><td colspan="5" id="jijihap-md-keyword"></td></tr>
+  <tr><th>대인관계</th><td colspan="5" id="jijihap-md-relation"></td></tr>
+  <tr><th>사회관계</th><td colspan="5" id="jijihap-md-social"></td></tr>
+  <tr><th>상징적 설명</th><td colspan="5" id="jijihap-md-symbol"></td></tr>
+  
+</table>
+
+<!-- 일지 + 시지 -->
+<h4>🔷 일지와 시지</h4>
+<table class="result-table" style="table-layout: fixed; width: 100%; word-break: break-word;">
+  <tr><th>지지1</th><td id="jijihap-ds-ji1"></td><th>지지2</th><td id="jijihap-ds-ji2"></td><th>유형</th><td id="jijihap-ds-type"></td></tr>
+  <tr><th>속성/설명</th><td colspan="5" id="jijihap-ds-attributeDescription"></td></tr>
+  <tr><th>성향요약</th><td colspan="5" id="jijihap-ds-summary"></td></tr>
+  <tr><th>키워드</th><td colspan="5" id="jijihap-ds-keyword"></td></tr>
+  <tr><th>대인관계</th><td colspan="5" id="jijihap-ds-relation"></td></tr>
+  <tr><th>사회관계</th><td colspan="5" id="jijihap-ds-social"></td></tr>
+  <tr><th>상징적 설명</th><td colspan="5" id="jijihap-ds-symbol"></td></tr>
+  
+</table>
+
+
+  <h4>🔷 지지 삼방형 해석</h4>
+<table class="result-table">
+  <tr>
+    <th>지지1</th><td id="jijihap-sambang-ji1"></td>
+    <th>지지2</th><td id="jijihap-sambang-ji2"></td>
+    <th>지지3</th><td id="jijihap-sambang-ji3"></td>
+  </tr>
+  <tr><th>속성/설명</th><td colspan="5" id="jijihap-sambang-type"></td></tr>
+  <tr><th>성향요약</th><td colspan="5" id="jijihap-sambang-summary"></td></tr>
+  <tr><th>키워드</th><td colspan="5" id="jijihap-sambang-keyword"></td></tr>
+  <tr><th>대인관계</th><td colspan="5" id="jijihap-sambang-relation"></td></tr>
+  <tr><th>사회관계</th><td colspan="5" id="jijihap-sambang-social"></td></tr>
+  <tr><th>상징적 설명</th><td colspan="5" id="jijihap-sambang-symbol"></td></tr>
+</table>
+
+<!-- 여기서 연지 + 월지 + 일지 결과와 월지 + 일지 + 시지 결과를 다 동일한 테이블에 출력하도록 처리 -->
+</div>
+
+
+
+<!-- 월지일간 해석 전용 영역 -->
+<div id="block3-woljiilgan" style="display: none;">
+  <h4>🔷 월지 + 일간 해석 (용신 기준)</h4>
+  <table class="result-table">
+  <tr><th>일간</th><td id="woljiilgan-ilgan"></td><th>월지</th><td id="woljiilgan-wolji"></td></tr>
+  <tr><th>주용신</th><td colspan="3" id="woljiilgan-main"></td></tr>
+  <tr><th>보조용신</th><td colspan="3" id="woljiilgan-sub"></td></tr>
+  <tr><th>계절 특성</th><td colspan="3" id="woljiilgan-season"></td></tr>
+  <tr><th>용신 해설</th><td colspan="3" id="woljiilgan-desc"></td></tr>
+  <tr><th>용신 규성</th><td colspan="3" id="woljiilgan-rule"></td></tr>
+  <tr><th>명리 요점</th><td colspan="3" id="woljiilgan-point"></td></tr>
+  <tr><th>계절과 시간</th><td colspan="3" id="woljiilgan-time"></td></tr>
+</table>
+
+<h4>🔷 주용신 / 보조용신 출현 여부</h4>
+<table class="result-table">
+  <tr>
+    <th>주용신 출현 여부</th><td id="woljiilgan-match-main"></td>
+    <th>보조용신 출현 여부</th><td id="woljiilgan-match-sub"></td>
+  </tr>
+</table>
+
+</div>
+
+
+<div id="block3-gyeokguk" style="display: none;">
+ <h4>🔷 격국 선택</h4>
+<select id="gyeokguk-select" onchange="renderGyeokguk()">
+  <option value="">-- 격국을 선택하세요 --</option>
+  <option value="식신격">식신격</option>
+  <option value="상관격">상관격</option>
+  <option value="정재격">정재격</option>
+  <option value="편재격">편재격</option>
+  <option value="정관격">정관격</option>
+  <option value="편관격">편관격</option>
+  <option value="정인격">정인격</option>
+  <option value="편인격">편인격</option>
+  <option value="양인격">양인격</option>
+  <option value="음인격">음인격</option>
+  <option value="양건록격">양건록격</option>
+  <option value="음건록격">음건록격</option>
+</select>
+
+
+<h4>📘 격국 해석</h4>
+<table class="result-table">
+  <tr><th>격국</th><td id="gyeokguk-name"></td></tr>
+  <tr><th>성격</th><td id="gyeokguk-char"></td></tr>
+  <tr><th>키워드</th><td id="gyeokguk-keyword"></td></tr>
+  <tr><th>특징</th><td id="gyeokguk-feature"></td></tr>
+  <tr><th>직업</th><td id="gyeokguk-job"></td></tr>
+  <tr><th>원국성향</th><td id="gyeokguk-nature"></td></tr>
+  <tr><th>십성관계</th><td id="gyeokguk-relation"></td></tr>
+  <tr><th>파격과 방향</th><td id="gyeokguk-break"></td></tr>
+  <tr><th>기타</th><td id="gyeokguk-etc"></td></tr>
+</table>
+
+</div>
+
+
+
+<div id="block3-unseong" style="display: none;">
+  <h3>🧭 십이운성 해석</h3>
+
+  <!-- 🔷 십이운성 (봉법 기준) -->
+  <h4>🔷 십이운성 (봉법 기준: 연지/월지/일지/시지)</h4>
+
+  <!-- 연지 -->
+  <h5>🌀 연지 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="bongbeop-연지-unseong"></td></tr>
+    <tr><th>생애단계</th><td id="bongbeop-연지-stage"></td></tr>
+    <tr><th>핵심키워드</th><td id="bongbeop-연지-keyword"></td></tr>
+    <tr><th>요약</th><td id="bongbeop-연지-summary"></td></tr>
+    <tr><th>심리·성격</th><td id="bongbeop-연지-mind"></td></tr>
+    <tr><th>특징</th><td id="bongbeop-연지-feature"></td></tr>
+    <tr><th>해석</th><td id="bongbeop-연지-desc"></td></tr>
+    <tr><th>12신살</th><td id="bongbeop-연지-shinsal"></td></tr>
+    <tr><th>12신살 해석</th><td id="bongbeop-연지-shinsal-desc"></td></tr>
+  </table>
+
+  <!-- 월지 -->
+  <h5>🌀 월지 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="bongbeop-월지-unseong"></td></tr>
+    <tr><th>생애단계</th><td id="bongbeop-월지-stage"></td></tr>
+    <tr><th>핵심키워드</th><td id="bongbeop-월지-keyword"></td></tr>
+    <tr><th>요약</th><td id="bongbeop-월지-summary"></td></tr>
+    <tr><th>심리·성격</th><td id="bongbeop-월지-mind"></td></tr>
+    <tr><th>특징</th><td id="bongbeop-월지-feature"></td></tr>
+    <tr><th>해석</th><td id="bongbeop-월지-desc"></td></tr>
+    <tr><th>12신살</th><td id="bongbeop-월지-shinsal"></td></tr>
+    <tr><th>12신살 해석</th><td id="bongbeop-월지-shinsal-desc"></td></tr>
+  </table>
+
+  <!-- 일지 -->
+  <h5>🌀 일지 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="bongbeop-일지-unseong"></td></tr>
+    <tr><th>생애단계</th><td id="bongbeop-일지-stage"></td></tr>
+    <tr><th>핵심키워드</th><td id="bongbeop-일지-keyword"></td></tr>
+    <tr><th>요약</th><td id="bongbeop-일지-summary"></td></tr>
+    <tr><th>심리·성격</th><td id="bongbeop-일지-mind"></td></tr>
+    <tr><th>특징</th><td id="bongbeop-일지-feature"></td></tr>
+    <tr><th>해석</th><td id="bongbeop-일지-desc"></td></tr>
+    <tr><th>12신살</th><td id="bongbeop-일지-shinsal"></td></tr>
+    <tr><th>12신살 해석</th><td id="bongbeop-일지-shinsal-desc"></td></tr>
+  </table>
+
+  <!-- 시지 -->
+  <h5>🌀 시지 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="bongbeop-시지-unseong"></td></tr>
+    <tr><th>생애단계</th><td id="bongbeop-시지-stage"></td></tr>
+    <tr><th>핵심키워드</th><td id="bongbeop-시지-keyword"></td></tr>
+    <tr><th>요약</th><td id="bongbeop-시지-summary"></td></tr>
+    <tr><th>심리·성격</th><td id="bongbeop-시지-mind"></td></tr>
+    <tr><th>특징</th><td id="bongbeop-시지-feature"></td></tr>
+    <tr><th>해석</th><td id="bongbeop-시지-desc"></td></tr>
+    <tr><th>12신살</th><td id="bongbeop-시지-shinsal"></td></tr>
+    <tr><th>12신살 해석</th><td id="bongbeop-시지-shinsal-desc"></td></tr>
+  </table>
+
+  <br>
+
+  <!-- 🔷 십이운성 (거법 기준) -->
+  <h4>🔷 십이운성 (거법 기준: 연주/월주/일주/시주)</h4>
+
+  <!-- 연주 -->
+  <h5>☀️ 연주 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="guhuk-연주-unseong"></td></tr>
+    <tr><th>해석</th><td id="guhuk-연주-desc"></td></tr>
+  </table>
+
+  <!-- 월주 -->
+  <h5>☀️ 월주 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="guhuk-월주-unseong"></td></tr>
+    <tr><th>해석</th><td id="guhuk-월주-desc"></td></tr>
+  </table>
+
+  <!-- 일주 -->
+  <h5>☀️ 일주 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="guhuk-일주-unseong"></td></tr>
+    <tr><th>해석</th><td id="guhuk-일주-desc"></td></tr>
+  </table>
+  <!-- 시주 -->
+  <h5>☀️ 시주 기준</h5>
+  <table class="result-table">
+    <tr><th>운성</th><td id="guhuk-시주-unseong"></td></tr>
+    <tr><th>해석</th><td id="guhuk-시주-desc"></td></tr>
+  </table>
+</div> 
+
+
+<!-- 일간별 십성과유 -->
+<div id="block3-ilgansibsungyu" style="display: none;">
+  <h4>🔷 일간 선택</h4>
+  <select id="ilgan-select" onchange="renderIlganSibsungyu()">
+    <option value="">-- 일간을 선택하세요 --</option>
+    <option value="갑목">갑목</option>
+    <option value="을목">을목</option>
+    <option value="병화">병화</option>
+    <option value="정화">정화</option>
+    <option value="무토">무토</option>
+    <option value="기토">기토</option>
+    <option value="경금">경금</option>
+    <option value="신금">신금</option>
+    <option value="임수">임수</option>
+    <option value="계수">계수</option>
+  </select>
+
+  <h4>📒 일간별 십성과유 해석</h4>
+  <table class="result-table">
+    <thead>
+      <tr>
+        <th>십성</th>
+        <th>천간/오행</th>
+        <th>지지/오행</th>
+        <th>구분</th>
+        <th>내용</th>
+      </tr>
+    </thead>
+    <tbody id="ilgan-sibsungyu-body">
+      <!-- JS에서 자동 채워짐 -->
+    </tbody>
+  </table>
+</div>
+
+
+<!-- 명운합충 -->
+<div id="block3-myungwoon" style="display:none;">
+  <h3 class="section-title">🌌 명운 합충 / 삼합 / 형충파 해석</h3>
+  <div id="myungwoon-result" style="background:#fff; border-radius:8px; padding:10px;">
+    <div id="myungwoon-cheongan"></div>
+    <div id="myungwoon-jiji"></div>
+  </div>
+</div>
+
+<!-- 일주월지관계해석 -->
+<div id="block3-iljuwolji" style="display:none;">
+  <h3 class="section-title">🌕 일주-월지 관계 해석</h3>
+
+  <div id="iljuwolji-result" style="background:#fff; padding:16px; border-radius:12px; line-height:1.6;">
+    <div id="iljuwolji-cards"></div>
+  </div>
+</div>
+
+<!-- 지지 생왕묘 -->
+<div id="block3-jijisaengwangmyo" style="display:none;">
+  <h3>🌿 지지 생왕묘 해석</h3>
+  <p style="color:#555; margin-bottom:12px;">
+    각 지지의 위치(연·월·일·시)에 따른 생·왕·묘 작용을 확인합니다.
+  </p>
+
+  <table border="1" style="border-collapse:collapse; width:100%; text-align:center;">
+  <thead>
+    <tr>
+      <th>위치</th>
+      <th>지지</th>
+      <th>작용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 연지 -->
+    <tr>
+      <td rowspan="3">연지</td>
+      <td rowspan="3" id="saengwang-yeonji"></td>
+      <td id="saengwang-yeonji-act1">① 작용</td>
+    </tr>
+    <tr><td id="saengwang-yeonji-act2">② 위치작용</td></tr>
+    <tr><td id="saengwang-yeonji-act3">③ 세부작용</td></tr>
+
+    <!-- 월지 -->
+    <tr>
+      <td rowspan="3">월지</td>
+      <td rowspan="3" id="saengwang-wolji"></td>
+      <td id="saengwang-wolji-act1">① 작용</td>
+    </tr>
+    <tr><td id="saengwang-wolji-act2">② 위치작용</td></tr>
+    <tr><td id="saengwang-wolji-act3">③ 세부작용</td></tr>
+
+    <!-- 일지 -->
+    <tr>
+      <td rowspan="3">일지</td>
+      <td rowspan="3" id="saengwang-ilji"></td>
+      <td id="saengwang-ilji-act1">① 작용</td>
+    </tr>
+    <tr><td id="saengwang-ilji-act2">② 위치작용</td></tr>
+    <tr><td id="saengwang-ilji-act3">③ 세부작용</td></tr>
+
+    <!-- 시지 -->
+    <tr>
+      <td rowspan="3">시지</td>
+      <td rowspan="3" id="saengwang-siji"></td>
+      <td id="saengwang-siji-act1">① 작용</td>
+    </tr>
+    <tr><td id="saengwang-siji-act2">② 위치작용</td></tr>
+    <tr><td id="saengwang-siji-act3">③ 세부작용</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ⚡ 명운충 해석 -->
+<!-- ⚡ 명운충 해석 -->
+<div id="block3-myungwoonchung" style="display:none;">
+  <h3>⚡ 명운충 해석</h3>
+  <p style="color:#555;margin-bottom:12px;">
+    명운의 지지 중 지지1을 기준으로, 지지2가 명운 안에 존재할 때 충 관계를 표시합니다. (역순 불허)
+  </p>
+  <table border="1" style="border-collapse:collapse;width:100%;text-align:center;">
+    <thead>
+      <tr>
+        <th>위치(지지1)</th>
+        <th>지지(지지2)</th>
+        <th>작용</th>
+      </tr>
+    </thead>
+    <tbody id="myungchung-body">
+      <tr><td colspan="3">없음</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ⚡ 신살 해석 -->
+<div id="block3-sinsal" class="tab-content" style="display:none;">
+  <div id="result_sinsal"></div>
+</div>
+
+
+
+</div>
+</div>
+
+<div id="block4-wrapper" style="display:none;">
+  <div id="block4-tab-buttons" class="button-group">
+    <button class="block-btn-sub" onclick="showBlock4Tab('allluck')">📅 대운세운표</button>
+    <button class="block-btn-sub" onclick="showBlock4Tab('daewoon')">📜 대운세운</button>
+    <button class="block-btn-sub" onclick="showBlock4Tab('sewoon')">📘 세운월운</button>
+  </div>
+
+  <!-- 🔹 탭: 대운세운 -->
+  <div id="block4-daewoon" style="display:block;">
+
+  <!-- 대운 버튼 -->
+  <div id="daewoon-list-wrapper-daewoon" style="display:block; margin-top:16px; padding-left:20px;">
+    <h4>✨ 대운별 설명</h4>
+    <div id="daewoon-button-group-daewoon" class="button-group"></div>
+  </div>
+
+  <!-- 세운 버튼 -->
+  <div id="sewoon-list-wrapper-daewoon" style="display:none; margin-top:20px;"></div>
+
+  <!-- 세운 해석 -->
+  <div id="sewoon-detail-output-daewoon" style="display:none; margin-top:20px;">
+    <p style="color:gray;">대운과 세운을 선택하면 여기에 해석 결과가 표시됩니다.</p>
+  </div>
+
+  
+<h4>① 대운 운성</h4>
+<div style="display:flex; gap:20px; align-items:flex-start;">
+  <!-- 선택1: 십성 -->
+  <div>
+    <label for="daewoon-sipsung-select">십성</label><br>
+    <select id="daewoon-sipsung-select" onchange="showDaewoonSipsung()">
+      <option value="">-- 선택 --</option>
+      <option value="비견">비견</option>
+      <option value="겁재">겁재</option>
+      <option value="식신">식신</option>
+      <option value="상관">상관</option>
+      <option value="정재">정재</option>
+      <option value="편재">편재</option>
+      <option value="정관">정관</option>
+      <option value="편관">편관</option>
+      <option value="정인">정인</option>
+      <option value="편인">편인</option>
+    </select>
+  </div>
+
+  <!-- 선택2: 십이운성 -->
+  <div>
+    <label for="daewoon-unseong-select">십이운성</label><br>
+    <select id="daewoon-unseong-select" onchange="showDaewoonUnseong()">
+      <option value="">-- 선택 --</option>
+      <option value="장생">장생</option>
+      <option value="목욕">목욕</option>
+      <option value="관대">관대</option>
+      <option value="건록">건록</option>
+      <option value="제왕">제왕</option>
+      <option value="쇠">쇠</option>
+      <option value="병">병</option>
+      <option value="사">사</option>
+      <option value="묘">묘</option>
+      <option value="절">절</option>
+      <option value="태">태</option>
+      <option value="양">양</option>
+    </select>
+  </div>
+</div>
+<div id="daewoon-result-box" class="result-box" style="margin-top:8px;"></div>
+
+
+<h4>② 세운 운성</h4>
+<div style="display:flex; gap:20px; align-items:flex-start;">
+  <!-- 선택1: 십성 -->
+  <div>
+    <label for="sewoon-sipsung-select">십성</label><br>
+    <select id="sewoon-sipsung-select" onchange="showSewoonSipsung()">
+      <option value="">-- 선택 --</option>
+      <option value="비견">비견</option>
+      <option value="겁재">겁재</option>
+      <option value="식신">식신</option>
+      <option value="상관">상관</option>
+      <option value="정재">정재</option>
+      <option value="편재">편재</option>
+      <option value="정관">정관</option>
+      <option value="편관">편관</option>
+      <option value="정인">정인</option>
+      <option value="편인">편인</option>
+    </select>
+  </div>
+
+  <!-- 선택2: 십이운성 -->
+  <div>
+    <label for="sewoon-unseong-select">십이운성</label><br>
+    <select id="sewoon-unseong-select" onchange="showSewoonUnseong()">
+      <option value="">-- 선택 --</option>
+      <option value="장생">장생</option>
+      <option value="목욕">목욕</option>
+      <option value="관대">관대</option>
+      <option value="건록">건록</option>
+      <option value="제왕">제왕</option>
+      <option value="쇠">쇠</option>
+      <option value="병">병</option>
+      <option value="사">사</option>
+      <option value="묘">묘</option>
+      <option value="절">절</option>
+      <option value="태">태</option>
+      <option value="양">양</option>
+    </select>
+  </div>
+</div>
+<div id="sewoon-result-box" class="result-box" style="margin-top:8px;"></div>
+
+<h4>③ 대운충</h4>
+<div style="display:flex; gap:20px; flex-wrap:wrap;">
+  <!-- ① 명운 지지 선택 -->
+  <div>
+    <label>명운 지지 선택</label><br>
+    <select id="daewoonchung-jiji">
+      <option value="">-- 선택 --</option>
+      <option value="자수">자수(子)</option>
+      <option value="축토">축토(丑)</option>
+      <option value="인목">인목(寅)</option>
+      <option value="묘목">묘목(卯)</option>
+      <option value="진토">진토(辰)</option>
+      <option value="사화">사화(巳)</option>
+      <option value="오화">오화(午)</option>
+      <option value="미토">미토(未)</option>
+      <option value="신금">신금(申)</option>
+      <option value="유금">유금(酉)</option>
+      <option value="술토">술토(戌)</option>
+      <option value="해수">해수(亥)</option>
+    </select>
+  </div>
+
+  <!-- ② 대운 지지 선택 -->
+  <div>
+    <label>대운 지지 선택</label><br>
+    <select id="daewoonchung-daewoon">
+      <option value="">-- 선택 --</option>
+      <option value="자수">자수(子)</option>
+      <option value="축토">축토(丑)</option>
+      <option value="인목">인목(寅)</option>
+      <option value="묘목">묘목(卯)</option>
+      <option value="진토">진토(辰)</option>
+      <option value="사화">사화(巳)</option>
+      <option value="오화">오화(午)</option>
+      <option value="미토">미토(未)</option>
+      <option value="신금">신금(申)</option>
+      <option value="유금">유금(酉)</option>
+      <option value="술토">술토(戌)</option>
+      <option value="해수">해수(亥)</option>
+    </select>
+  </div>
+
+  <!-- ③ 위치 선택 -->
+  <div>
+    <label>위치 선택</label><br>
+    <select id="daewoonchung-pos">
+      <option value="">-- 선택 --</option>
+      <option value="연지">연지</option>
+      <option value="월지">월지</option>
+      <option value="일지">일지</option>
+      <option value="시지">시지</option>
+    </select>
+  </div>
+
+  <!-- 실행 버튼 -->
+  <div style="align-self:flex-end;">
+    <button onclick="showDaewoonChung()">🔍 해석 보기</button>
+  </div>
+</div>
+
+<!-- 결과 영역 -->
+<div id="daewoonchung-result" style="margin-top:12px;"></div>
+
+
+</div>
+
+  <!-- 🔹 탭: 세운월운 -->
+  <div id="block4-sewoon" style="display:none;">
+
+    <!-- 대운 버튼 -->
+    <div id="daewoon-list-wrapper-sewoon" style="display:block; margin-top:16px; padding-left:20px;">
+      <h4>✨ 대운별 선택 (세운월운)</h4>
+      <div id="daewoon-button-group-sewoon" class="button-group"></div>
+    </div>
+
+    <!-- 세운 버튼 -->
+    <div id="sewoon-list-wrapper-sewoon" style="display:none; margin-top:20px;"></div>
+
+    <!-- 월운 해석 -->
+    <div id="wolwoon-detail-output-sewoon" style="display:none; margin-top:20px;">
+      <p style="color:gray;">세운을 선택하면 여기에 월운 해석표가 표시됩니다.</p>
+    </div>
+  </div>
+
+<!-- 🔹 탭: 대운세운표(AllLuck) -->
+<div id="block4-allluck" style="display:none;">
+  <!-- 헤더 -->
+  <h3 style="margin:0 0 12px; font-size:18px; color:#333;">📦 대운·세운·월운 종합표</h3>
+
+  <!-- 안내 / 로딩 / 에러 / 데이터 출력 컨테이너 -->
+  <div id="allluck-wrapper"
+       style="border:1px solid #ddd; border-radius:8px; padding:16px; background:#fafafa; min-height:120px; font-size:14px;">
+
+    <!-- 초기 안내 -->
+    <p style="color:gray; margin:0;">
+      아래 버튼을 눌러 <b>대운+세운+월운 데이터를 한 번에</b> 불러올 수 있습니다.
+    </p>
+
+    <!-- 로딩 버튼 -->
+    <div style="margin-top:12px;">
+      <button class="small-button"
+              onclick="onEnterAllLuckTab()"
+              style="padding:6px 12px; border-radius:6px; font-size:14px; cursor:pointer;">
+        🔄 데이터 불러오기
+      </button>
+    </div>
+  </div>
+
+  <!-- 추가 컨테이너: 표 렌더링 후 들어올 곳 -->
+  <div id="allluck-output" style="margin-top:16px;"></div>
+</div>
+</div> <!-- block4-wrapper -->
+
+
+
+
+
+
+
+
+<div id="block5-wrapper" style="display:none; margin-top:20px;">
+  <h3>📚 참고자료</h3>
+
+  <!-- 참고자료 탭 버튼 -->
+  <div id="block5-tab-buttons" class="button-group" style="margin-bottom:16px;">
+    <button class="block-btn-sub" onclick="showBlock5Tab('ohaeng-nature')">🧬 오행의 성질</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('sibsung-guide')">🔮 십성 안내</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('sibsung-summary')">📖 십성 요약</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('sibsung-over')">⚡ 십성 과다</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('ohaeng-over')">🌀 오행 과다</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('sinsal')">🌟 신살 해설</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('ohaeng-basic')">🌳 기본 오행</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('cheongan-advanced')">☯ 10천간 심화</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('cheongan-sibsung')">🔮 천간 십성·오행</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('jiji-sibsung')">🌀 지지 십성·오행</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('unyuhyeong')">🩺 운유형·건강론</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('ohaeng-food')">🥗 기본 오행 음식</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('gongmang')">🌑 공망 해설</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('myungChungHyeongPa')">💫 명충형파설명</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('daewoonChungHyeongPa')">🌌 대운충형파설명</button>
+    <button class="block-btn-sub" onclick="showBlock5Tab('sipiyoonseong')">📘 십이운성 조견표</button>
+
+  </div>
+
+  <!-- 오행의 성질 -->
+  <div id="block5-ohaeng-nature" style="display:none;">
+    <h3 style="text-align:center; margin:16px 0;">🧬 오행의 성질</h3>
+    <table class="result-table">
+    <tr>
+    <th>분류</th>
+    <th style="background:#388e3c; color:#fff;">木</th>
+    <th style="background:#d32f2f; color:#fff;">火</th>
+    <th style="background:#d7a54d;">土</th>
+    <th style="background:#90a4ae;">金</th>
+    <th style="background:#212121; color:#fff;">水</th>
+  </tr>
+  <tr><th>계절</th><td>봄</td><td>여름</td><td>환절기</td><td>가을</td><td>겨울</td></tr>
+  <tr><th>조화</th><td>생성</td><td>성장</td><td>조화</td><td>수렴</td><td>잠복</td></tr>
+  <tr><th>천간</th><td>甲乙</td><td>丙丁</td><td>戊己</td><td>庚辛</td><td>壬癸</td></tr>
+  <tr><th>지지</th><td>寅卯</td><td>巳午</td><td>辰戌丑未</td><td>申酉</td><td>亥子</td></tr>
+  <tr><th>수(數)</th><td>3·8</td><td>7·2</td><td>5·10</td><td>9·4</td><td>1·6</td></tr>
+  <tr><th>오궁</th><td>청룡</td><td>주작</td><td>황룡</td><td>백호</td><td>현무</td></tr>
+  <tr><th>오성</th><td>세성</td><td>형혹성</td><td>진성</td><td>태백</td><td>진성</td></tr>
+  <tr><th>오기후</th><td>바람</td><td>더움</td><td>습함</td><td>건조</td><td>추움</td></tr>
+  <tr><th>오곡</th><td>보리·콩</td><td>메기장·수수</td><td>차기장·기장쌀</td><td>벼·현미·율무</td><td>검정콩</td></tr>
+  <tr><th>오장</th><td>간·담</td><td>심장·소장</td><td>비·위</td><td>폐·대장</td><td>신·방광</td></tr>
+  <tr><th>지배부위</th><td>눈·목·근육</td><td>혀·얼굴·피</td><td>입·위장</td><td>코·폐·피부</td><td>귀·신장·허리</td></tr>
+  <tr><th>증상</th><td>한습</td><td>딸꾹질</td><td>트림</td><td>재채기</td><td>하품</td></tr>
+  <tr><th>오각</th><td>시(視)</td><td>미(味)</td><td>언(言)</td><td>후(嗅)</td><td>청(聽)</td></tr>
+  <tr><th>오사</th><td>공손</td><td>밝음</td><td>분명</td><td>조리</td><td>지혜</td></tr>
+  <tr><th>오성</th><td>인자</td><td>예의</td><td>믿음</td><td>의리</td><td>지혜</td></tr>
+  <tr><th>오복</th><td>장수</td><td>건강</td><td>청결</td><td>부귀</td><td>덕</td></tr>
+  <tr><th>오색</th><td>청</td><td>적</td><td>황</td><td>백</td><td>흑</td></tr>
+  <tr><th>오음</th><td>각</td><td>치</td><td>궁</td><td>상</td><td>우</td></tr>
+  <tr><th>오미</th><td>신맛</td><td>쓴맛</td><td>단맛</td><td>매운맛</td><td>짠맛</td></tr>
+  <tr><th>오취</th><td>누린내</td><td>탄내</td><td>황내</td><td>비린내</td><td>썩은내</td></tr>
+  <tr><th>오지</th><td>화냄</td><td>기쁨</td><td>생각</td><td>공포</td><td>근심</td></tr>
+  <tr><th>도형</th><td>직사각형</td><td>역삼각형</td><td>원</td><td>정사각형</td><td>정삼각형</td></tr>
+</table>
+  </div>
+
+  <!-- 십성 안내 -->
+  <div id="block5-sibsung-guide" style="display:none;">
+    <h4>🔮 십성 안내</h4>
+
+  <!-- 십성 선택 -->
+  <select id="sibsung-select" onchange="renderSibsungGuide()" 
+        style="font-size:16px; padding:6px 10px; width:200px; height:40px;">
+  <option value="">-- 십성을 선택하세요 --</option>
+  <option value="비견">비견</option>
+  <option value="겁재">겁재</option>
+  <option value="식신">식신</option>
+  <option value="상관">상관</option>
+  <option value="정관">정관</option>
+  <option value="편관">편관</option>
+  <option value="정재">정재</option>
+  <option value="편재">편재</option>
+  <option value="정인">정인</option>
+  <option value="편인">편인</option>
+</select>
+
+  <!-- 결과 표시 -->
+  <table class="result-table" style="margin-top:16px;">
+    <tr><th>십성</th><td id="sibsung-name"></td></tr>
+    <tr><th>의미</th><td id="sibsung-meaning"></td></tr>
+    <tr><th>성격</th><td id="sibsung-trait"></td></tr>
+    <tr><th>키워드</th><td id="sibsung-keyword"></td></tr>
+    <tr><th>특성</th><td id="sibsung-feature"></td></tr>
+    <tr><th>주요내용</th><td id="sibsung-detail"></td></tr>
+  </table>
+  </div>
+
+  <!-- 십성 요약 -->
+ <div id="block5-sibsung-summary" style="display:none;">
+  <h4>📖 십성 요약</h4>
+  <table class="result-table">
+    <thead>
+      <tr>
+        <th>십성</th>
+        <th>역할</th>
+        <th>상징물/이미지</th>
+        <th>성격 및 태도</th>
+        <th>현실적 의미</th>
+        <th>설명</th>
+        <th>직업/사회</th>
+        <th>연애·이성운</th>
+        <th>특징/경향</th>
+      </tr>
+    </thead>
+    <tbody id="sibsung-summary-body">
+      <!-- JS에서 자동 채워짐 -->
+    </tbody>
+  </table>
+</div>
+
+ <!-- 십성과다 -->
+<div id="block5-sibsung-over" style="display:none;">
+  <h3>십성 해석 정리표</h3>
+
+  <table border="1" cellspacing="0" cellpadding="6" 
+         style="border-collapse:collapse; width:100%; font-size:14px; text-align:left; line-height:1.6;">
+    <thead style="background:#f0f0f0; text-align:left;">
+      <tr>
+        <th style="width:8%;">십성</th>
+        <th style="width:30%;">많을 경우</th>
+        <th style="width:25%;">없을 때</th>
+        <th style="width:37%;">다른 십성과 관계</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 비겁 -->
+      <tr>
+        <td><b>👬🤝 비겁<br>(비견+겁재)</b></td>
+        <td style="text-align:left; vertical-align:top;">
+          • 신왕해져 인성 도움 불필요<br>
+          • 공부엔 관심 적고 친구와 어울림<br>
+          • 윗사람 간섭 거부, 독립성 강함<br>
+          • 자수성가, 개인사업 적합<br>
+          • 추진력·고집 강 → 성공의 동력<br>
+          • 중도 포기만 피하면 성취 가능<br>
+          • 낭비벽 심, 재물 소모 큼<br>
+          • 자아 강하고 인정 욕구 강함<br>
+          • 사람 많으나 의존적 → 고독감
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          • 주변 기대에 눌려 전전긍긍<br>
+          • 작심삼일, 결단력 부족<br>
+          • 우유부단, 소극적
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          👬 비겁(비견·겁재) = 나·동료 / 고집·경쟁<br>
+          • 일지 비견 + 귀인성(천을·천덕·월덕·문창) → 예술/엔터 성취
+        </td>
+      </tr>
+
+      <!-- 식상 -->
+      <tr>
+        <td><b>🎨🎤 식상<br>(식신+상관)</b></td>
+        <td style="text-align:left; vertical-align:top;">
+          • 총명·아이디어 발휘<br>
+          • 예체능·특수기술·교육·시민운동 적합<br>
+          • 자유분방, 구속 싫어함<br>
+          • 일 벌림 많으나 마무리 부족<br>
+          • 말만 앞서거나, 일에 미쳐 몸 혹사<br>
+          • 좋아하는 일에서 희열·성취<br>
+          • 과다하면 결혼·가정 등한시
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          • 외부 간섭·통제에 순응<br>
+          • 억울감·우울감 누적<br>
+          • 순간 욱하고 후회
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          🎨 식상(식신·상관) = 창조·표현 / 자유·예술<br>
+          • 식신+편인: 편인 억압 시 식신 약화 → 재성 오면 회복<br>
+          • 식상혼잡: 집중력 약화, 직업·사업 변화 심함<br>
+          • 식신+편관: 식신이 편관 제어 → 제살(制殺)
+        </td>
+      </tr>
+
+      <!-- 재성 -->
+      <tr>
+        <td><b>💰📦 재성<br>(정재+편재)</b></td>
+        <td style="text-align:left; vertical-align:top;">
+          • 재물 집착·사업확장<br>
+          • 돈·여자 문제로 재앙 가능<br>
+          • 인성 극 → 공부·문서 약화, 가출 성향<br>
+          • 일간 약 → 재성 태과 시 건강 문제, 과로<br>
+          • 소유욕·낭비벽·집착 등 유형 다양<br>
+          • 집착은 장점, 낭비는 위험
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          • 노력해도 결과 불만족<br>
+          • 비교·열등감<br>
+          • 비효율적, 에너지 소모 큼
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          💰 재성(정재·편재) = 재물·소유 / 욕심·투자<br>
+          • 재성 혼잡: 돈 들어와도 빠져나감<br>
+          • 정재→정관: 원칙·보수적, 경영·재무 적합<br>
+          • 편재→정관: 편법재물 → 불만족·구설<br>
+          • 정재→편관: 안정 후 명예 추구 → 재물 손실<br>
+          • 편재→편관(일간 강): 지도자, 추진력<br>
+          • 편재→편관(일간 약): 불륜·건강·자식 문제<br>
+          • 정재·편재가 인성을 억제 → 계약·학업 손실/현실 감각 부여
+        </td>
+      </tr>
+
+      <!-- 관성 -->
+      <tr>
+        <td><b>⚖️🛡️ 관성<br>(정관+편관)</b></td>
+        <td style="text-align:left; vertical-align:top;">
+          • 인내·자제·규범의 힘<br>
+          • 신약이면 질병·스트레스 많음<br>
+          • 자신감 약, 타인 의존<br>
+          • 태생적으로 예민·예술적<br>
+          • 마음 먹으면 누구보다 독함<br>
+          • 스스로 죄여오는 느낌, 짜증·불만 多
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          • 능력 무시, 책임만 과중<br>
+          • 자유 갈망·현실 불만<br>
+          • 탈출 어려움, 불만 내재
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          ⚖️ 관성(정관·편관) = 규율·권위 / 책임·통제<br>
+          • 정관 2↑ → 조직 승진 유리<br>
+          • 정관+비견 → 가업·관직<br>
+          • 정관+편재 → 제조업·상공업<br>
+          • 정관+겁재 → 이성 문제<br>
+          • 편관+편인 → 예술·엔터테인먼트<br>
+          • 편관+정인 → 순수예술·전통예술<br>
+          • 편관+겁재 → 보증·채무 손실
+        </td>
+      </tr>
+
+      <!-- 인성 -->
+      <tr>
+        <td><b>📚🧘 인성<br>(정인+편인)</b></td>
+        <td style="text-align:left; vertical-align:top;">
+          • 전문성·자격증·학문으로 길 열림<br>
+          • 생각 많음·소심·의존적<br>
+          • 표현력 강하나 추진력 부족<br>
+          • 애정결핍·고립감<br>
+          • 아는 것 많으나 설득력 약<br>
+          • 행동하는 지식인·전문가 될 것
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          • 미래지향적이지만 실행력 부족<br>
+          • 불만 많음, 환경 탓<br>
+          • 의욕은 있으나 실천 부족
+        </td>
+        <td style="text-align:left; vertical-align:top;">
+          📚 인성(정인·편인) = 학문·보호 / 전문성·사색<br>
+          • 편인: 이별·고독·예술·종교성<br>
+          • 편인 과다: 계모 슬하, 허약, 가정 불화<br>
+          • 편인+관살 → 부귀<br>
+          • 편인+여명 과다 → 남편 대신 생존경쟁<br>
+          • 정인 강 → 보수적, 실행력 약화
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <!-- 오행과다 -->
+  <div id="block5-ohaeng-over" style="display:none;">
+    <h3>🌟 심화 오행 성격표</h3>
+
+<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse; width:100%; text-align:center; font-size:14px;">
+  <thead style="background:#f0f0f0;">
+    <tr>
+      <th>오행</th>
+      <th>구분</th>
+      <th>성격·심리</th>
+      <th>대인관계·사회</th>
+      <th>건강·신체</th>
+      <th>생활 조언</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 목 -->
+    <tr><td rowspan="4">🌳 목(木)<br>曲直</td>
+      <td>적정</td>
+      <td>원만, 추진력·실행력, 인자·온화</td>
+      <td>협력적, 처복 있음, 조직 친화</td>
+      <td>간·근골 튼튼, 체력 양호</td>
+      <td>목표 달성 꾸준, 균형 잡힌 진취성</td></tr>
+    <tr><td>과다</td>
+      <td>과잉 의욕, 조급·산만, 출세욕 과도</td>
+      <td>직장·거주 불안정, 사기 당함</td>
+      <td>간염·간암, 교통사고</td>
+      <td>욕심 줄이고 절제, 페이스 조절</td></tr>
+    <tr><td>부족</td>
+      <td>목표의식 약화, 의존적, 불안·우울</td>
+      <td>처복 없음, 대인관계 불안</td>
+      <td>뼈·근육 약화, 디스크·골다공증</td>
+      <td>작은 목표부터 성취, 자기 주도 강화</td></tr>
+    <tr><td>부재</td>
+      <td>게으름, 무의욕, 인색</td>
+      <td>정착 못함, 추진력 결여</td>
+      <td>사고·추락 위험, 근골 약화</td>
+      <td>규칙 생활, 책임감 훈련</td></tr>
+
+    <!-- 화 -->
+    <tr><td rowspan="4">🔥 화(火)<br>炎上</td>
+      <td>적정</td>
+      <td>따뜻·정직, 정의감, 활달</td>
+      <td>정직·다정, 분위기 메이커</td>
+      <td>심장·혈관 건강 안정</td>
+      <td>밝은 인간관계, 스트레스 관리</td></tr>
+    <tr><td>과다</td>
+      <td>다혈질, 성급·경솔, 허영</td>
+      <td>외화내빈, 충돌·분쟁</td>
+      <td>고혈압, 심근경색, 안압 상승</td>
+      <td>분노 조절, 호흡 훈련</td></tr>
+    <tr><td>부족</td>
+      <td>무관심, 권태, 인정 안함</td>
+      <td>가정불화, 바람기</td>
+      <td>심리 불안정, 정열 결핍</td>
+      <td>가정 책임의식, 관계 회복</td></tr>
+    <tr><td>부재</td>
+      <td>무기력, 우울, 소극적</td>
+      <td>사회 단절, 관계 부족</td>
+      <td>심장·시력 약화</td>
+      <td>운동·취미로 활력 회복</td></tr>
+
+    <!-- 토 -->
+    <tr><td rowspan="4">🟨 토(土)<br>假色</td>
+      <td>적정</td>
+      <td>신뢰·안정, 포용력</td>
+      <td>사회적 중심, 중재자</td>
+      <td>위·소화기관 건강</td>
+      <td>안정적 생활, 중심축 역할</td></tr>
+    <tr><td>과다</td>
+      <td>고집, 답답, 신앙 과도</td>
+      <td>인간관계 단절, 사기·투기</td>
+      <td>위염·위궤양·역류성 식도염</td>
+      <td>개방성·유연성 훈련</td></tr>
+    <tr><td>부족</td>
+      <td>신념·의지 부족, 방황</td>
+      <td>재물운 약화, 주거 불안</td>
+      <td>소화불량, 불안정</td>
+      <td>작은 성취 경험, 안정 직업 추구</td></tr>
+    <tr><td>부재</td>
+      <td>중용 결여, 극단적 사고</td>
+      <td>사회 불신, 중재력 부재</td>
+      <td>소화기 질환, 사고 위험</td>
+      <td>조심성·균형감각 훈련</td></tr>
+
+    <!-- 금 -->
+    <tr><td rowspan="4">⚔️ 금(金)<br>從革</td>
+      <td>적정</td>
+      <td>결단력, 책임감, 신중</td>
+      <td>의리·염치, 결과 지향</td>
+      <td>폐·대장·관절 건강</td>
+      <td>원칙·신뢰성 유지</td></tr>
+    <tr><td>과다</td>
+      <td>자기중심, 공격성</td>
+      <td>배신·살기, 경쟁 과열</td>
+      <td>디스크·관절염·폐질환</td>
+      <td>겸손·양보 훈련</td></tr>
+    <tr><td>부족</td>
+      <td>자원·분별 부족</td>
+      <td>궁핍, 배우자 인연 약함</td>
+      <td>폐·대장 기능 약화</td>
+      <td>분별력 강화, 재정 계획</td></tr>
+    <tr><td>부재</td>
+      <td>허영, 무계획</td>
+      <td>결정장애, 화려함만 추구</td>
+      <td>면역 약화, 골격 문제</td>
+      <td>절제·검소, 근검절약</td></tr>
+
+    <!-- 수 -->
+    <tr><td rowspan="4">💧 수(水)<br>潤下</td>
+      <td>적정</td>
+      <td>지혜·총명, 융통성</td>
+      <td>적응력, 원만한 관계</td>
+      <td>신장·비뇨·생식 건강</td>
+      <td>차분·유연한 사고</td></tr>
+    <tr><td>과다</td>
+      <td>음란·방탕, 변덕</td>
+      <td>가정 불안, 이혼·무자식</td>
+      <td>신장염·방광염·자궁질환</td>
+      <td>절제, 생활 리듬 관리</td></tr>
+    <tr><td>부족</td>
+      <td>불안정, 이중인격, 거짓</td>
+      <td>신뢰 약화, 산만</td>
+      <td>정력·지구력 저하</td>
+      <td>규칙성, 책임감 강화</td></tr>
+    <tr><td>부재</td>
+      <td>만성피로, 판단력 부재</td>
+      <td>고독·타향살이</td>
+      <td>정신질환, 자율신경 불안</td>
+      <td>꾸준한 학습, 수면 관리</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- 신살 탭 -->
+<div id="block5-sinsal" style="display:none;">
+  <h3>🌟 신살 해설</h3>
+
+  <!-- 1차 선택: 길/흉/조건부 -->
+  <select id="sinsalType" onchange="loadSinsalList()">
+    <option value="">-- 분류 선택 --</option>
+    <option value="🌟 길신">🌟 길신</option>
+    <option value="⚡ 흉신">⚡ 흉신</option>
+    <option value="🔮 조건부">🔮 조건부</option>
+  </select>
+
+  <!-- 2차 선택: 신살 이름 -->
+  <select id="sinsalName" onchange="loadSinsalDetail()">
+    <option value="">-- 신살 선택 --</option>
+  </select>
+
+  <!-- 상세 출력 -->
+  <div id="sinsalDetail" style="margin-top:16px;"></div>
+</div>
+
+<!-- 기본 오행 -->
+<div id="block5-ohaeng-basic" style="display:none;">
+  <h3>🌳 기본 오행</h3>
+
+  <!-- 오행 선택 드롭다운 -->
+  <select id="ohaeng-basic-select" onchange="renderOhaengBasic()"
+          style="font-size:16px; padding:6px 10px; margin-bottom:16px;">
+    <option value="">-- 오행 선택 --</option>
+    <option value="목">목(木)</option>
+    <option value="화">화(火)</option>
+    <option value="토">토(土)</option>
+    <option value="금">금(金)</option>
+    <option value="수">수(水)</option>
+  </select>
+
+  <!-- 출력 영역 -->
+  <table class="result-table">
+    <tr><th>기본</th><td id="ohaeng-basic-text"></td></tr>
+    <tr><th>성격</th><td id="ohaeng-trait-text"></td></tr>
+    <tr><th>과다/무</th><td id="ohaeng-extra-text"></td></tr>
+    <tr><th>적성</th><td id="ohaeng-job-text"></td></tr>
+  </table>
+</div>
+
+<!-- 10천간 심화 -->
+<div id="block5-cheongan-advanced" style="display:none;">
+  <h3>☯ 10천간 심화</h3>
+
+  <!-- 천간 선택 -->
+  <select id="cheongan-advanced-select" onchange="renderCheonganAdvanced()"
+          style="font-size:16px; padding:6px 10px; margin-bottom:16px;">
+    <option value="">-- 천간 선택 --</option>
+    <option value="갑목">갑목(甲木)</option>
+    <option value="을목">을목(乙木)</option>
+    <option value="병화">병화(丙火)</option>
+    <option value="정화">정화(丁火)</option>
+    <option value="무토">무토(戊土)</option>
+    <option value="기토">기토(己土)</option>
+    <option value="경금">경금(庚金)</option>
+    <option value="신금">신금(辛金)</option>
+    <option value="임수">임수(壬水)</option>
+    <option value="계수">계수(癸水)</option>
+  </select>
+
+  <!-- 출력 -->
+  <table class="result-table">
+    <tr><th>기본사항</th><td id="cheongan-adv-basic"></td></tr>
+    <tr><th>성격</th><td id="cheongan-adv-trait"></td></tr>
+    <tr><th>특징</th><td id="cheongan-adv-feature"></td></tr>
+    <tr><th>흐름</th><td id="cheongan-adv-flow"></td></tr>
+    <tr><th>관계</th><td id="cheongan-adv-relation"></td></tr>
+    <tr><th>장단점</th><td id="cheongan-adv-advdisadv"></td></tr>
+  </table>
+</div>
+
+<!-- 천간 십성·오행 -->
+<div id="block5-cheongan-sibsung" style="display:none;">
+  <h3>🔮 천간 십성·오행</h3>
+
+  <!-- 선택 영역 -->
+  <div style="margin-bottom:16px;">
+    <label>일간 선택:</label>
+    <select id="cheongan-sibsung-ilgan" onchange="renderCheonganSibsung()"
+            style="font-size:15px; padding:4px 8px;">
+      <option value="">-- 일간 --</option>
+      <option value="갑목">갑목(甲木)</option>
+      <option value="을목">을목(乙木)</option>
+      <option value="병화">병화(丙火)</option>
+      <option value="정화">정화(丁火)</option>
+      <option value="무토">무토(戊土)</option>
+      <option value="기토">기토(己土)</option>
+      <option value="경금">경금(庚金)</option>
+      <option value="신금">신금(辛金)</option>
+      <option value="임수">임수(壬水)</option>
+      <option value="계수">계수(癸水)</option>
+    </select>
+
+    <label style="margin-left:12px;">십성 선택:</label>
+    <select id="cheongan-sibsung-sibsung" onchange="renderCheonganSibsung()"
+            style="font-size:15px; padding:4px 8px;">
+      <option value="">-- 십성 --</option>
+      <option value="비견">비견</option>
+      <option value="겁재">겁재</option>
+      <option value="식신">식신</option>
+      <option value="상관">상관</option>
+      <option value="편재">편재</option>
+      <option value="정재">정재</option>
+      <option value="편관">편관</option>
+      <option value="정관">정관</option>
+      <option value="편인">편인</option>
+      <option value="정인">정인</option>
+    </select>
+  </div>
+
+  <!-- 출력 영역 -->
+  <table class="result-table">
+    <tr><th>상대 오행</th><td id="cs-relative"></td></tr>
+    <tr><th>상징</th><td id="cs-symbol"></td></tr>
+    <tr><th>특징</th><td id="cs-feature"></td></tr>
+    <tr><th>행동 패턴</th><td id="cs-pattern"></td></tr>
+    <tr><th>성향</th><td id="cs-trait"></td></tr>
+    <tr><th>많을 때</th><td id="cs-many"></td></tr>
+    <tr><th>적정할 때</th><td id="cs-normal"></td></tr>
+    <tr><th>없을 때</th><td id="cs-lack"></td></tr>
+  </table>
+</div>
+
+<!-- 지지 십성·오행 -->
+<div id="block5-jiji-sibsung" style="display:none;">
+  <h3>🌀 지지 십성·오행</h3>
+
+  <!-- 선택 영역 -->
+  <div style="margin-bottom:16px;">
+    <label>지지 선택:</label>
+    <select id="jiji-sibsung-jiji" onchange="renderJijiSibsung()"
+            style="font-size:15px; padding:4px 8px;">
+      <option value="">-- 지지 --</option>
+      <option value="인목">인목(寅)</option>
+      <option value="묘목">묘목(卯)</option>
+      <option value="진토">진토(辰)</option>
+      <option value="사화">사화(巳)</option>
+      <option value="오화">오화(午)</option>
+      <option value="미토">미토(未)</option>
+      <option value="신금">신금(申)</option>
+      <option value="유금">유금(酉)</option>
+      <option value="술토">술토(戌)</option>
+      <option value="해수">해수(亥)</option>
+      <option value="자수">자수(子)</option>
+      <option value="축토">축토(丑)</option>
+    </select>
+
+    <label style="margin-left:12px;">십성 선택:</label>
+    <select id="jiji-sibsung-sibsung" onchange="renderJijiSibsung()"
+            style="font-size:15px; padding:4px 8px;">
+      <option value="">-- 십성 --</option>
+      <option value="비견">비견</option>
+      <option value="겁재">겁재</option>
+      <option value="식신">식신</option>
+      <option value="상관">상관</option>
+      <option value="편재">편재</option>
+      <option value="정재">정재</option>
+      <option value="편관">편관</option>
+      <option value="정관">정관</option>
+      <option value="편인">편인</option>
+      <option value="정인">정인</option>
+    </select>
+  </div>
+
+  <!-- 출력 영역 -->
+  <table class="result-table">
+    <tr><th>특성</th><td id="js-feature"></td></tr>
+    <tr><th>행동패턴</th><td id="js-pattern"></td></tr>
+    <tr><th>성향</th><td id="js-trait"></td></tr>
+    <tr><th>많을 때</th><td id="js-many"></td></tr>
+    <tr><th>적정할 때</th><td id="js-normal"></td></tr>
+    <tr><th>없을 때</th><td id="js-lack"></td></tr>
+  </table>
+</div>
+
+<!-- 🪐 운별 통합 해석 -->
+<div id="block5-unyuhyeong" style="display:none;">
+  <h3 class="section-title">🪐 운별 해석</h3>
+
+  <!-- 운 선택 -->
+  <div style="margin-bottom:12px;">
+    <label for="fortune-select"><b>운 선택:</b></label>
+    <select id="fortune-select" onchange="loadFortuneFull()">
+      <option value="">-- 운을 선택하세요 --</option>
+      <option value="직업운">💼 직업운</option>
+      <option value="결혼궁합운">💍 결혼·궁합운</option>
+      <option value="자녀운">👶 자녀운</option>
+      <option value="재물운">💰 재물운</option>
+      <option value="건강운">🩺 건강운</option>
+    </select>
+  </div>
+
+  <!-- 전체 설명 출력 영역 -->
+  <div id="fortune-full" style="
+    background:#fff; 
+    padding:20px; 
+    border-radius:14px; 
+    line-height:1.7; 
+    box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+    white-space:pre-line;
+  ">
+    <p style="color:#777;">운을 선택하면 해당 운의 전체 설명이 여기에 표시됩니다.</p>
+  </div>
+</div>
+
+<!-- 🌿 기본 오행 음식 탭 -->
+<div id="block5-ohaeng-food" style="display:none;">
+  <h3 class="section-title">🌿 기본 오행 음식 해설</h3>
+
+  <div style="margin-bottom:12px;">
+    <label for="ohaeng-food-select"><b>오행 선택:</b></label>
+    <select id="ohaeng-food-select" onchange="loadOhaengFoodDetail()">
+      <option value="">-- 오행을 선택하세요 --</option>
+      <option value="목">🌳 목(木)</option>
+      <option value="화">🔥 화(火)</option>
+      <option value="토">⛰️ 토(土)</option>
+      <option value="금">⚙️ 금(金)</option>
+      <option value="수">💧 수(水)</option>
+      <option value="상화">☯️ 상화(相火)</option>
+    </select>
+  </div>
+
+  <div id="ohaeng-food-detail" style="
+      background:#fff;
+      padding:16px;
+      border-radius:12px;
+      line-height:1.7;
+      white-space:pre-line;">
+    <p style="color:#777;">오행을 선택하면 해당 오행의 음식 해설이 표시됩니다.</p>
+  </div>
+</div>
+
+<!-- 🌑 공망 해설 탭 -->
+<div id="block5-gongmang" style="display:none;">
+  <h3 class="section-title">🌑 공망 해설</h3>
+
+  <!-- 선택박스 -->
+  <div style="margin-bottom:10px;">
+    <label for="gongmang-select"><b>공망 선택:</b></label>
+    <select id="gongmang-select" onchange="loadGongmangDetail()">
+      <option value="">-- 공망을 선택하세요 --</option>
+      <option value="자축공망">자축공망</option>
+      <option value="인묘공망">인묘공망</option>
+      <option value="진사공망">진사공망</option>
+      <option value="오미공망">오미공망</option>
+      <option value="신유공망">신유공망</option>
+      <option value="술해공망">술해공망</option>
+      <option value="식상공망">식상공망</option>
+      <option value="재성공망">재성공망</option>
+      <option value="관성공망">관성공망</option>
+      <option value="인성공망">인성공망</option>
+      <option value="비겁공망">비겁공망</option>
+    </select>
+  </div>
+
+  <!-- 결과 표시 영역 -->
+  <div id="gongmang-result" style="
+      background:#fff;
+      padding:14px;
+      border-radius:10px;
+      border-left:4px solid #555;
+      font-size:14.8px;
+      line-height:1.45;">
+    <p style="color:#777;">공망을 선택하면 일주와 특징이 표시됩니다.</p>
+  </div>
+</div>
+
+<!-- ✅ 명충형파설명 -->
+<div id="block5-myungChungHyeongPa" style="display:none;">
+  <h3>💫 명충형파설명</h3>
+  <div id="reference-content-myung"></div>
+</div>
+
+<!-- ✅ 대운충형파설명 -->
+<div id="block5-daewoonChungHyeongPa" style="display:none;">
+  <h3>🌌 대운충형파설명</h3>
+  <div id="reference-content-daewoon"></div>
+</div>
+
+<style>
+  /* 기본 설정 */
+  #block5-sipiyoonseong {
+    font-family: "Noto Sans KR", sans-serif;
+    text-align: center;
+  }
+  #block5-sipiyoonseong table {
+    border-collapse: collapse;
+    margin: 30px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: visible !important;
+  }
+  #block5-sipiyoonseong caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 12px;
+  }
+  #block5-sipiyoonseong th,
+  #block5-sipiyoonseong td {
+    border: 1px solid #777;
+    width: 75px;
+    height: 38px;
+    text-align: center;
+    font-size: 15px;
+    position: relative;
+  }
+
+  /* 🌀 오행별 지지 색상 */
+  .wood   { background-color: #e2f4da; color: #207520; }   /* 목: 인·묘 */
+  .fire   { background-color: #ffe2e0; color: #c72626; }   /* 화: 사·오 */
+  .earth  { background-color: #f8e7cd; color: #a65d00; }   /* 토: 진·술·축·미 */
+  .metal  { background-color: #fff7cc; color: #a08600; }   /* 금: 신·유 */
+  .water  { background-color: #e1edff; color: #2055aa; }   /* 수: 해·자 */
+
+  /* 🌈 Tooltip 디자인 */
+  .tooltip {
+    position: relative;
+    cursor: help;
+    font-weight: bold;
+  }
+  .tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 110%;          /* ✅ 위쪽 대신 아래쪽으로 표시 */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 1000;      /* ✅ 다른 요소 위로 */
+}
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+  /* 💫 순환 애니메이션 효과 (장생→양 흐름) */
+  @keyframes pulseFlow {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 130, 0, 0.6); }
+    50%  { box-shadow: 0 0 10px 6px rgba(255, 130, 0, 0.3); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 130, 0, 0.0); }
+  }
+  .flow-animate {
+    animation: pulseFlow 3s infinite;
+    border-radius: 6px;
+  }
+</style>
+
+<!-- 📘 십이운성 조견표 -->
+<div id="block5-sipiyoonseong" style="display:none;">
+  <table>
+    <caption>십이운성(十二運星) 조견표</caption>
+    <tr>
+      <th>운성</th>
+      <th>甲</th>
+      <th>乙</th>
+      <th>丙</th>
+      <th>丁</th>
+      <th>戊</th>
+      <th>己</th>
+      <th>庚</th>
+      <th>辛</th>
+      <th>壬</th>
+      <th>癸</th>
+    </tr>
+
+    <tr><th class="tooltip" data-tooltip="시작의 기운, 새 생명의 탄생">장생</th>
+      <td class="wood flow-animate">亥</td><td class="fire">午</td><td class="wood">寅</td><td class="metal">酉</td><td class="wood">寅</td><td class="metal">酉</td><td class="fire">巳</td><td class="water">子</td><td class="metal">申</td><td class="wood">卯</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="성장이 시작되는 청춘기">목욕</th>
+      <td class="water">子</td><td class="fire">巳</td><td class="wood">卯</td><td class="metal">申</td><td class="wood">卯</td><td class="metal">申</td><td class="fire">午</td><td class="water">亥</td><td class="metal">酉</td><td class="earth">辰</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="사회적 자리를 얻는 시기">관대</th>
+      <td class="earth">丑</td><td class="earth">辰</td><td class="earth">辰</td><td class="metal">酉</td><td class="earth">辰</td><td class="earth">未</td><td class="earth">未</td><td class="earth">戌</td><td class="earth">戌</td><td class="earth">丑</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="세상 속에서 힘을 발휘하기 시작">건록</th>
+      <td class="wood">寅</td><td class="wood">卯</td><td class="fire">巳</td><td class="fire">午</td><td class="fire">巳</td><td class="fire">午</td><td class="metal">申</td><td class="metal">酉</td><td class="water">亥</td><td class="water">子</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="전성기, 에너지 최고조">제왕</th>
+      <td class="wood">卯</td><td class="wood">寅</td><td class="fire">午</td><td class="fire">巳</td><td class="fire">午</td><td class="fire">巳</td><td class="metal">酉</td><td class="metal">申</td><td class="water">子</td><td class="water">亥</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="기운이 약해지는 시기">쇠</th>
+      <td class="earth">辰</td><td class="earth">丑</td><td class="earth">未</td><td class="earth">辰</td><td class="earth">未</td><td class="earth">辰</td><td class="earth">戌</td><td class="earth">未</td><td class="earth">丑</td><td class="earth">戌</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="병약해지는 시기">병</th>
+      <td class="fire">巳</td><td class="water">子</td><td class="metal">申</td><td class="wood">卯</td><td class="metal">申</td><td class="wood">卯</td><td class="water">亥</td><td class="fire">午</td><td class="wood">寅</td><td class="metal">酉</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="활동이 멈추는 시기">사</th>
+      <td class="fire">午</td><td class="water">亥</td><td class="metal">酉</td><td class="wood">寅</td><td class="metal">酉</td><td class="wood">寅</td><td class="water">子</td><td class="fire">巳</td><td class="wood">卯</td><td class="metal">申</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="기운이 땅속에 묻혀 쉬는 시기">묘</th>
+      <td class="earth">未</td><td class="earth">戌</td><td class="earth">戌</td><td class="earth">丑</td><td class="earth">戌</td><td class="earth">丑</td><td class="earth">丑</td><td class="earth">辰</td><td class="earth">辰</td><td class="earth">未</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="기운이 끊어지고 새로운 변화의 시작">절</th>
+      <td class="metal">申</td><td class="metal">酉</td><td class="water">亥</td><td class="water">子</td><td class="water">亥</td><td class="water">子</td><td class="wood">寅</td><td class="wood">卯</td><td class="fire">巳</td><td class="fire">午</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="새 생명의 잉태, 재탄생의 준비">태</th>
+      <td class="metal">酉</td><td class="metal">申</td><td class="water">子</td><td class="water">亥</td><td class="water">子</td><td class="water">亥</td><td class="wood">卯</td><td class="wood">寅</td><td class="fire">午</td><td class="fire">巳</td></tr>
+
+    <tr><th class="tooltip" data-tooltip="아직 미약하지만 생명력이 자라나는 시기">양</th>
+      <td class="earth">戌</td><td class="earth">未</td><td class="earth">丑</td><td class="earth">戌</td><td class="earth">丑</td><td class="earth">戌</td><td class="earth">辰</td><td class="earth">丑</td><td class="earth">未</td><td class="earth">辰</td></tr>
+  </table>
+
+  <p style="color:#555;font-size:13px;margin-top:10px;">
+    💡 각 지지는 오행색으로 구분되며, <b>‘장생’</b> 행에는 순환 애니메이션 효과가 표시됩니다.
+  </p>
+</div>
+
+
+  <!-- 외부 링크 -->
+  <h4 style="margin-top:24px;">🌐 외부 참고 링크</h4>
+  <ul style="line-height:1.6;">
+    <li><a href="https://ko.wikipedia.org/wiki/사주명리학" target="_blank">사주명리학 (위키백과)</a></li>
+    <li><a href="https://terms.naver.com/list.naver?cid=50216&categoryId=50216" target="_blank">네이버 지식백과 – 사주/명리</a></li>
+    <li><a href="https://blog.naver.com/land4004" target="_blank">사주명리스토리</a></li>
+  </ul>
+</div>
+
+
+
