@@ -315,15 +315,15 @@
 
       <p style="margin:6px 0; font-size:13px; color:#555;">
         ✉️ 이용 중 불편사항은 
-        <a href="mailto:seoungdo@gmail.com" style="color:#1976d2; text-decoration:none; font-weight:500;">
-          seoungdo@gmail.com
+        <a href="/cdn-cgi/l/email-protection#becddbd1cbd0d9dad1fed9d3dfd7d290ddd1d3" style="color:#1976d2; text-decoration:none; font-weight:500;">
+          <span class="__cf_email__" data-cfemail="d0a3b5bfa5beb7b4bf90b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span>
         </a> 으로 문의해 주세요.
       </p>
     </div>
   </div>
 
   <!-- ✅ Firebase 연동 스크립트 -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Firebase Functions API 설정
     const FIREBASE_API = 'https://us-central1-saju-app-bdd75.cloudfunctions.net';
 
@@ -356,17 +356,16 @@
         // 출생지 드롭다운 초기화
         populateSiDropdown();
 
-        // Firebase에서 템플릿 로드
+        // Firebase에서 템플릿 로드 시도 (실패해도 계속 진행)
         await loadTemplates();
 
-        // 스크립트 로드
+        // 스크립트 로드 시도 (실패해도 계속 진행)
         await loadScripts();
 
-        hideLoading();
       } catch (error) {
-        console.error('초기화 실패:', error);
+        console.error('초기화 중 오류:', error);
+      } finally {
         hideLoading();
-        alert('페이지를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.');
       }
     });
 
@@ -385,22 +384,42 @@
     // 템플릿 로드
     async function loadTemplates() {
       try {
-        showLoading('block1 로드 중...');
-        const block1Response = await fetch(`${FIREBASE_API}/getTemplate?name=block1`);
-        if (!block1Response.ok) throw new Error('block1 로드 실패');
-        const block1HTML = await block1Response.text();
-        document.getElementById('block1-container').innerHTML = block1HTML;
+        showLoading('템플릿 로드 중...');
+        
+        // block1 로드 (결과 표시용)
+        try {
+          const block1Response = await fetch(`${FIREBASE_API}/getTemplate?name=block1`, {
+            method: 'GET',
+            mode: 'cors'
+          });
+          if (block1Response.ok) {
+            const block1HTML = await block1Response.text();
+            document.getElementById('block1-container').innerHTML = block1HTML;
+            console.log('✅ block1 로드 성공');
+          }
+        } catch (error) {
+          console.warn('⚠️ block1 로드 실패:', error);
+        }
 
-        showLoading('block2 로드 중...');
-        const block2Response = await fetch(`${FIREBASE_API}/getTemplate?name=block2`);
-        if (!block2Response.ok) throw new Error('block2 로드 실패');
-        const block2HTML = await block2Response.text();
-        document.getElementById('block2-container').innerHTML = block2HTML;
+        // block2 로드 (결과 표시용)
+        try {
+          const block2Response = await fetch(`${FIREBASE_API}/getTemplate?name=block2`, {
+            method: 'GET',
+            mode: 'cors'
+          });
+          if (block2Response.ok) {
+            const block2HTML = await block2Response.text();
+            document.getElementById('block2-container').innerHTML = block2HTML;
+            console.log('✅ block2 로드 성공');
+          }
+        } catch (error) {
+          console.warn('⚠️ block2 로드 실패:', error);
+        }
 
         console.log('템플릿 로드 완료');
       } catch (error) {
         console.error('템플릿 로드 에러:', error);
-        throw error;
+        // 에러가 있어도 계속 진행
       }
     }
 
@@ -413,7 +432,7 @@
         'script_block3_2',
         'script_block3_4',
         'script_block4',
-        'script_block4_Daewoon',
+        'script_block4_daewoon',
         'script_block4_sewoon',
         'script_block6',
         'script_block7'
@@ -629,13 +648,4 @@
         names.forEach(name => {
           const btn = document.createElement("button");
           btn.className = "small-button";
-          btn.style.cssText = "padding: 6px 12px; font-size: 14px; border-radius: 6px; background-color: #007bff; color: white; border: none; cursor: pointer; margin: 4px;";
-          btn.textContent = name;
-          btn.onclick = () => loadSavedResult(name);
-          nameBox.appendChild(btn);
-        });
-      }
-    }
-  </script>
-</body>
-</html>
+          btn.style.cssText = "padding: 6px 12px; font-size: 14px; border-radius: 6px; background-color: #007b
