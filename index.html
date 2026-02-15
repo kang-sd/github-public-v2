@@ -1,450 +1,123 @@
+<!-- index.html - GitHub Public -->
+<!-- 🔓 공개: HTML 구조 + CSS + 입력폼 -->
+<!-- 🔒 비공개: 로직은 Firebase Functions에서 동적 로드 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <title>사주팔자</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <style>
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: #fff;
-      color: #000;
-      font-size: 18px;
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 20px;
-    }
-    .section-title {
-      color: #222;
-      font-weight: 700;
-      font-size: 22px;
-      text-align: center;
-      margin: 20px 0 16px;
-      padding: 10px;
-      background: #f5f8ff;
-      border-radius: 8px;
-      border-bottom: 3px solid #1976d2;
-    }
-    .block-btn-main {
-      background: #1976d2;
-      color: #fff;
-      border-radius: 6px;
-      padding: 10px 16px;
-      font-weight: bold;
-      font-size: 15px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .block-btn-main:hover {
-      background: #1565c0;
-    }
-    .block-btn-main.active {
-      background: #0d47a1;
-    }
-    .block-btn-sub {
-      background: #f0f0f0;
-      color: #333;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 8px 12px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .block-btn-sub:hover {
-      background: #dcedc8;
-      border-color: #8bc34a;
-    }
-    .block-btn-sub.active {
-      background: #2e7d32;
-      color: #fff;
-      border-color: #1b5e20;
-    }
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 8px 0;
-    }
-    .form-table {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto;
-      border-collapse: separate;
-      border-spacing: 8px 12px;
-      font-size: 16px;
-    }
-    .form-table td {
-      padding: 6px;
-      vertical-align: middle;
-    }
-    .form-table input[type="text"],
-    .form-table select {
-      width: 100%;
-      padding: 10px 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
-    .form-table input[type="radio"],
-    .form-table input[type="checkbox"] {
-      transform: scale(1.2);
-      margin-right: 5px;
-    }
-    .form-table label {
-      margin-right: 12px;
-      font-weight: 400;
-      font-size: 15px;
-    }
-    .main-container {
-      background-color: rgba(245, 245, 245, 0.95);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      width: 100%;
-      max-width: 700px;
-    }
-    .main-button {
-      background-color: #007bff;
-      color: white;
-      padding: 12px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      width: 100%;
-      cursor: pointer;
-      font-weight: bold;
-      box-sizing: border-box;
-    }
-    .main-button:hover {
-      background-color: #0056b3;
-    }
-    .small-button {
-      padding: 6px 12px;
-      font-size: 14px;
-      border-radius: 6px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin: 4px;
-    }
-    .small-button:hover {
-      background-color: #0056b3;
-    }
-    .header-row { background-color: #e0f7fa; color: #000; font-weight: bold; }
-    .siseong-row { background-color: #fef9e7; color: #333; }
-    .sigak-row { background-color: #f2f2f2; color: #333; }
-    .jijanggan-row { background-color: #e8f5e9; color: #222; }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 15px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      text-align: center;
-    }
-    .result-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      overflow: hidden;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .result-table th {
-      background-color: #f0f4f8;
-      color: #333;
-      text-align: center;
-      padding: 10px 12px;
-      border-bottom: 1px solid #ddd;
-      white-space: nowrap;
-    }
-    .result-table td {
-      background-color: #ffffff;
-      color: #222;
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid #eee;
-      line-height: 1.5;
-    }
-    .hidden {
-      display: none;
-    }
-    .hidden-option {
-      display: none;
-    }
-    .solar-guide {
-      color: #1976d2;
-      font-weight: 600;
-      font-size: 14px;
-      margin-left: 8px;
-    }
-    #loading-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
-    #loading-overlay.show {
-      display: flex;
-    }
-    .loading-content {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- 로딩 오버레이 -->
-  <div id="loading-overlay">
-    <div class="loading-content">
-      <h2>⏳ 로딩 중...</h2>
-      <p id="loading-status">페이지를 불러오는 중입니다...</p>
-    </div>
-  </div>
-
   <div class="main-container">
-    <!-- ✅ 입력 폼 영역 -->
+
+    <!-- 입력 폼 영역 -->
     <div id="form-section">
-      <h2 class="section-title"><span id="title-star" style="cursor:pointer;">🌟</span> 사주팔자 입력 ⚡</h2>
-      <table class="form-table">
-        <tr>
-          <td><label for="name">이름:</label></td>
-          <td colspan="2"><input type="text" placeholder="홍길동" id="name" maxlength="10" /></td>
-        </tr>
-        <tr>
-          <td><label>성별:</label></td>
-          <td colspan="2">
-            <label><input type="radio" id="female" name="gender" value="여자" checked />여자</label>
-            <label><input type="radio" id="male" name="gender" value="남자" />남자</label>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="birthDate">생년월일:</label></td>
-          <td colspan="2">
-            <input type="text" placeholder="19900101" id="birthDate" maxlength="8" />
-            <label class="hidden-option"><input type="checkbox" id="lunar" />음력</label>
-            <label class="hidden-option"><input type="checkbox" id="leapMonth" />윤달</label>
-            <span class="solar-guide">🌞 양력으로 입력하세요</span>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="birthTime">출생시간:</label></td>
-          <td colspan="2">
-            <input type="text" placeholder="1330" id="birthTime" maxlength="4" />
-            <label class="hidden-option"><input type="checkbox" id="noBirthTime" />모름</label>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="birth-si">출생지:</label></td>
-          <td>
-            <select id="birth-si" onchange="updateGunOptions()" required>
-              <option value="">-- 시도 선택 --</option>
-            </select>
-          </td>
-          <td>
-            <select id="birth-gun" required>
-              <option value="">-- 구/군 선택 --</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-
-      <input type="hidden" id="inName">
-
-      <div id="error-message" style="color:red; text-align:center; margin-top:10px; display:none;"></div>
-      <div id="loading-message" style="display:none; text-align:center; margin-top:20px; font-weight:bold; color:#0066cc;">
-        ⏳ 사주팔자를 구성 중입니다. 잠시만 기다려주세요
-      </div>
-
-      <div id="name-box" style="margin-top:16px; padding:16px; border:1px solid #ccc; border-radius:8px; background:#f7f7f7; display:none; flex-wrap:wrap; gap:8px;"></div>
-
-      <div style="margin-top:20px; display:flex; gap:12px;">
-        <button class="main-button" onclick="submitToSheet()">사주팔자 시작하기</button>
-      </div>
-
-      <div id="user-search" style="margin-top:20px; display:flex; gap:8px;">
-        <input type="text" id="search-name" placeholder="이름을 입력하세요"
-               style="padding:8px; font-size:16px; border:1px solid #ccc; border-radius:6px;">
-        <button class="main-button" onclick="searchResultByName()">🔍 이름으로 검색</button>
-      </div>
-
-      <div id="search-result-box" style="margin-top:15px; display:flex; flex-wrap:wrap; gap:8px;"></div>
-    </div>
-
-    <!-- ✅ 결과 표시 영역 -->
-    <div id="result-section" style="display:none; margin-top:30px;">
       <div id="block1-container"></div>
-      <div id="block2-container"></div>
+      <div id="form-container"></div>
     </div>
 
-    <!-- ✅ 하단 안내문구 -->
-    <div id="footer-message" style="margin-top:50px; font-size:13px; color:#444; text-align:center; line-height:1.8; 
-         border-top:2px solid #1976d2; padding:18px; background:#f9fbff; border-radius:8px;">
-      
-      <p style="font-size:14px; font-weight:bold; color:#1976d2; margin-bottom:8px;">
-        📌 이용 안내
-      </p>
+    <!-- 결과 표시 영역 -->
+    <div id="result-section" style="display:none; margin-top:30px;">
+      <div id="block2-container"></div>
+      <div id="block3-container"></div>
+    </div>
 
+    <!-- 하단 안내문구 -->
+    <div id="footer-message" style="margin-top:50px; font-size:13px; color:#444; text-align:center; line-height:1.8;
+         border-top:2px solid #1976d2; padding:18px; background:#f9fbff; border-radius:8px;">
+      <p style="font-size:14px; font-weight:bold; color:#1976d2; margin-bottom:8px;">📌 이용 안내</p>
       <p style="margin:6px 0;">
-        본 사주 사주팔자 프로그램은 <b style="color:#000;">kangseoungdo</b>에 저작권이 있으며,<br>
+        본 사주팔자 프로그램은 <b style="color:#000;">kangseoungdo</b>에 저작권이 있으며,<br>
         <span style="color:#d32f2f; font-weight:600;">상업적 사용 및 무단 배포는 금지</span>되어 있습니다.
       </p>
-
       <p style="margin:6px 0;">
-        입력된 개인정보(이름, 생년월일, 출생지 등)는 오직 <b>해석 목적</b>으로만 사용되며,<br>
-        다른 용도로 저장·활용되지 않습니다.
+        입력된 개인정보(이름, 생년월일, 출생지 등)는 오직 <b>해석 목적</b>으로만 사용됩니다.
       </p>
-
       <p style="margin:6px 0; font-style:italic; color:#666;">
-        ⚠️ 본 해석 결과는 참고용으로 제공되며, 법적 효력이나 절대적 진실을 보장하지 않습니다.<br>
-        모든 판단과 책임은 이용자 본인에게 있습니다.
+        ⚠️ 본 해석 결과는 참고용으로 제공되며, 법적 효력이나 절대적 진실을 보장하지 않습니다.
       </p>
-
       <p style="margin:6px 0;">
-        본 프로그램은 PC, 모바일, 태블릿 등 <b>어느 환경에서든 사용 가능</b>합니다.<br>
-        다만, 화면 크기와 가독성을 고려하여 <b style="color:#1976d2;">태블릿 사용을 권장</b>합니다.
+        본 프로그램은 PC, 모바일, 태블릿 등 어느 환경에서든 사용 가능합니다.<br>
+        다만 <b style="color:#1976d2;">태블릿 사용을 권장</b>합니다.
       </p>
-
       <p style="margin:6px 0; font-size:13px; color:#555;">
-        ✉️ 이용 중 불편사항은 
+        ✉️ 이용 중 불편사항은
         <a href="mailto:seoungdo@gmail.com" style="color:#1976d2; text-decoration:none; font-weight:500;">
           seoungdo@gmail.com
         </a> 으로 문의해 주세요.
       </p>
     </div>
+
   </div>
 
-  <!-- ✅ Firebase 연동 스크립트 -->
   <script>
-    // Firebase Functions API 설정
-    const FIREBASE_API = 'https://us-central1-saju-app-bdd75.cloudfunctions.net';
+    // ✅ [수정 1] window 전역으로 등록 (const는 window에 붙지 않음)
+    window.FIREBASE_API = 'https://us-central1-saju-app-bdd75.cloudfunctions.net';
 
-    // 출생지 데이터
-    const birthPlaceData = {
-      "강원도": ["춘천시", "원주시", "강릉시", "동해시", "태백시", "속초시", "삼척시", "홍천군", "횡성군", "영월군", "평창군", "정선군", "철원군", "화천군", "양구군", "인제군", "고성군", "양양군"],
-      "경기도": ["수원시", "성남시", "고양시", "용인시", "부천시", "안산시", "안양시", "남양주시", "화성시", "평택시", "의정부시", "파주시", "시흥시", "김포시", "광주시", "이천시", "양주시", "구리시", "오산시", "하남시", "여주시", "양평군", "동두천시", "과천시", "가평군", "연천군", "안성시"],
-      "경상남도": ["창원시", "진주시", "통영시", "사천시", "김해시", "밀양시", "거제시", "양산시", "의령군", "함안군", "창녕군", "고성군", "남해군", "하동군", "산청군", "함양군", "거창군", "합천군"],
-      "경상북도": ["포항시", "경주시", "김천시", "안동시", "구미시", "영주시", "영천시", "상주시", "문경시", "경산시", "군위군", "의성군", "청송군", "영양군", "영덕군", "청도군", "고령군", "성주군", "칠곡군", "예천군", "봉화군", "울진군", "울릉군"],
-      "광주광역시": ["동구", "서구", "남구", "북구", "광산구"],
-      "대구광역시": ["중구", "동구", "서구", "남구", "북구", "수성구", "달서구", "달성군"],
-      "대전광역시": ["동구", "중구", "서구", "유성구", "대덕구"],
-      "부산광역시": ["중구", "서구", "동구", "영도구", "부산진구", "동래구", "남구", "북구", "해운대구", "사하구", "금정구", "강서구", "연제구", "수영구", "사상구", "기장군"],
-      "서울특별시": ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구"],
-      "세종특별자치시": ["세종시"],
-      "울산광역시": ["중구", "남구", "동구", "북구", "울주군"],
-      "인천광역시": ["중구", "동구", "미추홀구", "연수구", "남동구", "부평구", "계양구", "서구", "강화군", "옹진군"],
-      "전라남도": ["목포시", "여수시", "순천시", "나주시", "광양시", "담양군", "곡성군", "구례군", "고흥군", "보성군", "화순군", "장흥군", "강진군", "해남군", "영암군", "무안군", "함평군", "영광군", "장성군", "완도군", "진도군", "신안군"],
-      "전라북도": ["전주시", "군산시", "익산시", "정읍시", "남원시", "김제시", "완주군", "진안군", "무주군", "장수군", "임실군", "순창군", "고창군", "부안군"],
-      "제주특별자치도": ["제주시", "서귀포시"],
-      "충청남도": ["천안시", "공주시", "보령시", "아산시", "서산시", "논산시", "계룡시", "당진시", "금산군", "부여군", "서천군", "청양군", "홍성군", "예산군", "태안군"],
-      "충청북도": ["청주시", "충주시", "제천시", "보은군", "옥천군", "영동군", "진천군", "괴산군", "음성군", "단양군", "증평군"]
-    };
-
-    // 페이지 로드 시 초기화
+    // 페이지 로드 시 순서대로 실행
     window.addEventListener('DOMContentLoaded', async () => {
-      showLoading('페이지를 불러오는 중입니다...');
-      
       try {
-        // 출생지 드롭다운 초기화
-        populateSiDropdown();
+        // ✅ [수정 2] google.script.run 호환 shim 가장 먼저 로드
+        await loadTemplateIntoHead('google-shim');
 
-        // Firebase에서 템플릿 로드 시도 (실패해도 계속 진행)
-        await loadTemplates();
+        // block1 (소개) 로드
+        const block1 = await fetch(`${window.FIREBASE_API}/getTemplate?name=block1`);
+        document.getElementById('block1-container').innerHTML = await block1.text();
 
-        // 스크립트 로드 시도 (실패해도 계속 진행)
+        // 입력 폼 로드
+        const formHTML = await fetch(`${window.FIREBASE_API}/getTemplate?name=input-form`);
+        document.getElementById('form-container').innerHTML = await formHTML.text();
+
+        // ✅ [수정 3] block2 (탭 네비게이션) 로드 - 기존 코드에서 누락되어 있었음
+        const block2 = await fetch(`${window.FIREBASE_API}/getTemplate?name=block2`);
+        document.getElementById('block2-container').innerHTML = await block2.text();
+
+        // 스크립트 동적 로드
         await loadScripts();
 
       } catch (error) {
-        console.error('초기화 중 오류:', error);
-      } finally {
-        hideLoading();
+        console.error('초기화 실패:', error);
+        document.body.insertAdjacentHTML('afterbegin',
+          `<div style="background:#ffebee;padding:16px;color:#c62828;border-radius:8px;margin:16px;">
+            ❌ 페이지 로드 실패: ${error.message}<br>
+            <small>Firebase Functions가 배포되어 있는지 확인하세요.</small>
+          </div>`
+        );
       }
     });
 
-    function showLoading(message) {
-      const overlay = document.getElementById('loading-overlay');
-      const status = document.getElementById('loading-status');
-      status.textContent = message;
-      overlay.classList.add('show');
-    }
-
-    function hideLoading() {
-      const overlay = document.getElementById('loading-overlay');
-      overlay.classList.remove('show');
-    }
-
-    // 템플릿 로드
-    async function loadTemplates() {
-      try {
-        showLoading('템플릿 로드 중...');
-        
-        // block1 로드 (결과 표시용)
-        try {
-          const block1Response = await fetch(`${FIREBASE_API}/getTemplate?name=block1`, {
-            method: 'GET',
-            mode: 'cors'
-          });
-          if (block1Response.ok) {
-            const block1HTML = await block1Response.text();
-            document.getElementById('block1-container').innerHTML = block1HTML;
-            console.log('✅ block1 로드 성공');
-          }
-        } catch (error) {
-          console.warn('⚠️ block1 로드 실패:', error);
-        }
-
-        // block2 로드 (결과 표시용)
-        try {
-          const block2Response = await fetch(`${FIREBASE_API}/getTemplate?name=block2`, {
-            method: 'GET',
-            mode: 'cors'
-          });
-          if (block2Response.ok) {
-            const block2HTML = await block2Response.text();
-            document.getElementById('block2-container').innerHTML = block2HTML;
-            console.log('✅ block2 로드 성공');
-          }
-        } catch (error) {
-          console.warn('⚠️ block2 로드 실패:', error);
-        }
-
-        console.log('템플릿 로드 완료');
-      } catch (error) {
-        console.error('템플릿 로드 에러:', error);
-        // 에러가 있어도 계속 진행
+    // 템플릿을 &lt;head&gt;에 스크립트로 삽입 (shim 전용)
+    async function loadTemplateIntoHead(name) {
+      const response = await fetch(`${window.FIREBASE_API}/getTemplate?name=${name}`);
+      const html = await response.text();
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      const scriptTags = div.querySelectorAll('script');
+      for (const oldScript of scriptTags) {
+        await new Promise((resolve) => {
+          const newScript = document.createElement('script');
+          newScript.textContent = oldScript.textContent;
+          newScript.onload = resolve;
+          newScript.onerror = resolve;
+          document.head.appendChild(newScript);
+          if (!oldScript.src) resolve(); // inline script는 즉시 실행
+        });
       }
     }
 
-    // 스크립트 동적 로드
+    // 스크립트 동적 로드 함수
     async function loadScripts() {
       const scripts = [
-        'script_ui',
+        // ✅ [수정 4] script_ui-firebase 사용 (구버전 script_ui 대신)
+        'script_ui-firebase',
         'script_block3',
         'script_block3_1',
         'script_block3_2',
         'script_block3_4',
         'script_block4',
+        // ✅ [수정 5] 소문자 d (script_block4_daewoon) - 기존 Daewoon은 404였음
         'script_block4_daewoon',
         'script_block4_sewoon',
         'script_block6',
@@ -453,220 +126,47 @@
 
       for (const scriptName of scripts) {
         try {
-          showLoading(`${scriptName} 로드 중...`);
-          const response = await fetch(`${FIREBASE_API}/getTemplate?name=${scriptName}`);
+          const response = await fetch(`${window.FIREBASE_API}/getTemplate?name=${scriptName}`);
           if (!response.ok) {
-            console.warn(`${scriptName} 로드 실패 - 계속 진행`);
+            console.warn(`[loadScripts] 템플릿 ${scriptName} 로드 실패: HTTP ${response.status}`);
             continue;
           }
-          
           const scriptHTML = await response.text();
-          
+
+          // <script> 태그 추출 및 실행 (HTML도 body에 추가)
           const div = document.createElement('div');
           div.innerHTML = scriptHTML;
-          const scriptTags = div.querySelectorAll('script');
-          
-          scriptTags.forEach(oldScript => {
-            const newScript = document.createElement('script');
-            if (oldScript.src) {
-              newScript.src = oldScript.src;
-            } else {
-              newScript.textContent = oldScript.textContent;
-            }
-            document.body.appendChild(newScript);
+
+          // HTML 요소(스타일 등)는 body에 추가
+          div.querySelectorAll('style').forEach(el => {
+            document.head.appendChild(el.cloneNode(true));
           });
-          
-          console.log(`${scriptName} 로드 완료`);
-        } catch (error) {
-          console.error(`${scriptName} 로드 에러:`, error);
-        }
-      }
-    }
 
-    // 출생지 드롭다운 초기화
-    function populateSiDropdown() {
-      const siSelect = document.getElementById("birth-si");
-      for (const si in birthPlaceData) {
-        const option = document.createElement("option");
-        option.value = si;
-        option.text = si;
-        siSelect.appendChild(option);
-      }
-    }
-
-    // 구/군 옵션 업데이트
-    function updateGunOptions() {
-      const si = document.getElementById("birth-si").value;
-      const gunSelect = document.getElementById("birth-gun");
-
-      gunSelect.innerHTML = '<option value="">-- 구/군 선택 --</option>';
-
-      if (si && birthPlaceData[si]) {
-        birthPlaceData[si].forEach(gun => {
-          const option = document.createElement("option");
-          option.value = gun;
-          option.text = gun;
-          gunSelect.appendChild(option);
-        });
-      }
-    }
-
-    // 사주 계산 함수
-    async function submitToSheet() {
-      const name = document.getElementById("name").value.trim();
-      const gender = document.querySelector('input[name="gender"]:checked').value;
-      const birthDate = document.getElementById("birthDate").value.trim();
-      const birthTime = document.getElementById("birthTime").value.trim();
-      const si = document.getElementById("birth-si").value;
-      const gun = document.getElementById("birth-gun").value;
-
-      // 유효성 검사
-      if (!name || !birthDate || !birthTime || !si || !gun) {
-        alert("모든 항목을 입력해주세요.");
-        return;
-      }
-
-      if (birthDate.length !== 8 || isNaN(birthDate)) {
-        alert("생년월일은 8자리 숫자로 입력해주세요. (예: 19900115)");
-        return;
-      }
-
-      if (birthTime.length !== 4 || isNaN(birthTime)) {
-        alert("출생시간은 4자리 숫자로 입력해주세요. (예: 1430)");
-        return;
-      }
-
-      // 로딩 표시
-      document.getElementById("loading-message").style.display = "block";
-      document.getElementById("error-message").style.display = "none";
-
-      try {
-        const formData = {
-          name: name,
-          gender: gender,
-          birthdate: birthDate,
-          birthtime: birthTime,
-          lunar: false,
-          si: si,
-          gun: gun
-        };
-
-        const response = await fetch(`${FIREBASE_API}/calculateSaju`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          // 결과 표시
-          displayResult(result);
-          
-          // 결과 섹션 표시
-          document.getElementById("form-section").style.display = "none";
-          document.getElementById("result-section").style.display = "block";
-        } else {
-          throw new Error(result.error || '사주 계산에 실패했습니다.');
-        }
-
-      } catch (error) {
-        console.error('Error:', error);
-        document.getElementById("error-message").textContent = 
-          '오류가 발생했습니다: ' + error.message;
-        document.getElementById("error-message").style.display = "block";
-      } finally {
-        document.getElementById("loading-message").style.display = "none";
-      }
-    }
-
-    // 결과 표시 함수 (스크립트에서 정의될 것임)
-    function displayResult(result) {
-      // 이 함수는 로드된 스크립트에서 정의됩니다
-      if (typeof window.displaySajuResult === 'function') {
-        window.displaySajuResult(result);
-      } else {
-        console.log('사주 결과:', result);
-      }
-    }
-
-    // 이름으로 검색 (일반 사용자용 - 비밀번호 불필요)
-    async function searchResultByName() {
-      const searchName = document.getElementById("search-name").value.trim();
-      
-      if (!searchName) {
-        alert("이름을 입력해주세요.");
-        return;
-      }
-
-      try {
-        // 일반 사용자는 비밀번호 없이 검색
-        const response = await fetch(
-          `${FIREBASE_API}/searchPublic?name=${encodeURIComponent(searchName)}`
-        );
-        const data = await response.json();
-
-        if (data.success && data.result) {
-          displayResult(data.result);
-          document.getElementById("form-section").style.display = "none";
-          document.getElementById("result-section").style.display = "block";
-        } else {
-          alert("해당 이름의 자료가 없습니다.");
-        }
-      } catch (error) {
-        console.error('검색 에러:', error);
-        alert("검색 중 오류가 발생했습니다.");
-      }
-    }
-
-    // 저장된 결과 로드
-    async function loadSavedResult(name) {
-      document.getElementById("search-name").value = name;
-      await searchResultByName();
-    }
-
-    // 🌟 클릭 이벤트 (관리자 모드)
-    setTimeout(() => {
-      const star = document.getElementById("title-star");
-      if (star) {
-        star.addEventListener("click", async function () {
-          const pwd = prompt("🔑 비밀번호를 입력하세요:");
-          if (pwd) {
-            // Firebase에서 비밀번호 검증
-            try {
-              const response = await fetch(`${FIREBASE_API}/getSavedNames?password=${encodeURIComponent(pwd)}`);
-              const data = await response.json();
-              
-              if (data.success) {
-                document.getElementById("name-box").style.display = "flex";
-                displaySavedNames(data.names);
-                alert("✅ 주인장 모드: 저장된 이름 목록을 불러왔습니다.");
+          // 스크립트 태그 실행
+          const scriptTags = div.querySelectorAll('script');
+          for (const oldScript of scriptTags) {
+            await new Promise((resolve) => {
+              const newScript = document.createElement('script');
+              if (oldScript.src) {
+                newScript.src = oldScript.src;
+                newScript.onload = resolve;
+                newScript.onerror = resolve;
               } else {
-                alert("❌ 비밀번호가 올바르지 않습니다.");
+                newScript.textContent = oldScript.textContent;
+                newScript.onload = resolve;
+                newScript.onerror = resolve;
               }
-            } catch (error) {
-              alert("❌ 인증에 실패했습니다.");
-            }
+              document.body.appendChild(newScript);
+              if (!oldScript.src) resolve();
+            });
           }
-        });
-      }
-    }, 1000);
-
-    // 저장된 이름 표시
-    function displaySavedNames(names) {
-      const nameBox = document.getElementById("name-box");
-      nameBox.innerHTML = '';
-
-      if (names && names.length > 0) {
-        names.forEach(name => {
-          const btn = document.createElement("button");
-          btn.className = "small-button";
-          btn.textContent = name;
-          btn.onclick = () => loadSavedResult(name);
-          nameBox.appendChild(btn);
-        });
+          console.log(`[loadScripts] ✅ ${scriptName} 로드 완료`);
+        } catch (err) {
+          console.error(`[loadScripts] ${scriptName} 오류:`, err);
+        }
       }
     }
   </script>
+
 </body>
 </html>
