@@ -1,16 +1,217 @@
-<!-- index.html - GitHub Public (완전판) -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <title>사주팔자</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #fff;
+      color: #000;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .section-title {
+      color: #222;
+      font-weight: 700;
+      font-size: 22px;
+      text-align: center;
+      margin: 20px 0 16px;
+      padding: 10px;
+      background: #f5f8ff;
+      border-radius: 8px;
+      border-bottom: 3px solid #1976d2;
+    }
+    .block-btn-main {
+      background: #1976d2;
+      color: #fff;
+      border-radius: 6px;
+      padding: 10px 16px;
+      font-weight: bold;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .block-btn-main:hover {
+      background: #1565c0;
+    }
+    .block-btn-main.active {
+      background: #0d47a1;
+    }
+    .block-btn-sub {
+      background: #f0f0f0;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .block-btn-sub:hover {
+      background: #dcedc8;
+      border-color: #8bc34a;
+    }
+    .block-btn-sub.active {
+      background: #2e7d32;
+      color: #fff;
+      border-color: #1b5e20;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .form-table {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      border-collapse: separate;
+      border-spacing: 8px 12px;
+      font-size: 16px;
+    }
+    .form-table td {
+      padding: 6px;
+      vertical-align: middle;
+    }
+    .form-table input[type="text"],
+    .form-table select {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .form-table input[type="radio"],
+    .form-table input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 5px;
+    }
+    .form-table label {
+      margin-right: 12px;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    .main-container {
+      background-color: rgba(245, 245, 245, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 700px;
+    }
+    .main-button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+    .main-button:hover {
+      background-color: #0056b3;
+    }
+    .header-row { background-color: #e0f7fa; color: #000; font-weight: bold; }
+    .siseong-row { background-color: #fef9e7; color: #333; }
+    .sigak-row { background-color: #f2f2f2; color: #333; }
+    .jijanggan-row { background-color: #e8f5e9; color: #222; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .result-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .result-table th {
+      background-color: #f0f4f8;
+      color: #333;
+      text-align: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid #ddd;
+      white-space: nowrap;
+    }
+    .result-table td {
+      background-color: #ffffff;
+      color: #222;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #eee;
+      line-height: 1.5;
+    }
+    .hidden {
+      display: none;
+    }
+    .hidden-option {
+      display: none;
+    }
+    .solar-guide {
+      color: #1976d2;
+      font-weight: 600;
+      font-size: 14px;
+      margin-left: 8px;
+    }
+    #loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    #loading-overlay.show {
+      display: flex;
+    }
+    .loading-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <div class="main-container">
+  <!-- 로딩 오버레이 -->
+  <div id="loading-overlay">
+    <div class="loading-content">
+      <h2>⏳ 로딩 중...</h2>
+      <p id="loading-status">페이지를 불러오는 중입니다...</p>
+    </div>
+  </div>
 
-    <!-- ✅ 입력 폼 화면 (직접 내장 - Firebase 불필요) -->
+  <div class="main-container">
+    <!-- ✅ 입력 폼 영역 -->
     <div id="form-section">
       <h2 class="section-title"><span id="title-star" style="cursor:pointer;">🌟</span> 사주팔자 입력 ⚡</h2>
       <table class="form-table">
@@ -57,681 +258,384 @@
       </table>
 
       <input type="hidden" id="inName">
+
       <div id="error-message" style="color:red; text-align:center; margin-top:10px; display:none;"></div>
       <div id="loading-message" style="display:none; text-align:center; margin-top:20px; font-weight:bold; color:#0066cc;">
         ⏳ 사주팔자를 구성 중입니다. 잠시만 기다려주세요
       </div>
+
       <div id="name-box" style="margin-top:16px; padding:16px; border:1px solid #ccc; border-radius:8px; background:#f7f7f7; display:none; flex-wrap:wrap; gap:8px;"></div>
+
       <div style="margin-top:20px; display:flex; gap:12px;">
         <button class="main-button" onclick="submitToSheet()">사주팔자 시작하기</button>
       </div>
+
       <div id="user-search" style="margin-top:20px; display:flex; gap:8px;">
         <input type="text" id="search-name" placeholder="이름을 입력하세요"
                style="padding:8px; font-size:16px; border:1px solid #ccc; border-radius:6px;">
         <button class="main-button" onclick="searchResultByName()">🔍 이름으로 검색</button>
       </div>
+
       <div id="search-result-box" style="margin-top:15px; display:flex; flex-wrap:wrap; gap:8px;"></div>
     </div>
 
-    <!-- ✅ 결과 화면 (제출 후 표시됨) - 원본과 동일 구조 -->
+    <!-- ✅ 결과 표시 영역 -->
     <div id="result-section" style="display:none; margin-top:30px;">
       <div id="block1-container"></div>
       <div id="block2-container"></div>
-      <div id="block3-container"></div>
     </div>
 
-    <!-- 하단 안내 -->
-    <div style="margin-top:50px; font-size:13px; color:#444; text-align:center; line-height:1.8;
+    <!-- ✅ 하단 안내문구 -->
+    <div id="footer-message" style="margin-top:50px; font-size:13px; color:#444; text-align:center; line-height:1.8; 
          border-top:2px solid #1976d2; padding:18px; background:#f9fbff; border-radius:8px;">
-      <p style="font-size:14px; font-weight:bold; color:#1976d2; margin-bottom:8px;">📌 이용 안내</p>
+      
+      <p style="font-size:14px; font-weight:bold; color:#1976d2; margin-bottom:8px;">
+        📌 이용 안내
+      </p>
+
       <p style="margin:6px 0;">
-        본 사주팔자 프로그램은 <b style="color:#000;">kangseoungdo</b>에 저작권이 있으며,<br>
+        본 사주 사주팔자 프로그램은 <b style="color:#000;">kangseoungdo</b>에 저작권이 있으며,<br>
         <span style="color:#d32f2f; font-weight:600;">상업적 사용 및 무단 배포는 금지</span>되어 있습니다.
       </p>
-      <p style="margin:6px 0;">입력된 개인정보(이름, 생년월일, 출생지 등)는 오직 <b>해석 목적</b>으로만 사용됩니다.</p>
-      <p style="margin:6px 0; font-style:italic; color:#666;">
-        ⚠️ 본 해석 결과는 참고용으로 제공되며, 법적 효력이나 절대적 진실을 보장하지 않습니다.
+
+      <p style="margin:6px 0;">
+        입력된 개인정보(이름, 생년월일, 출생지 등)는 오직 <b>해석 목적</b>으로만 사용되며,<br>
+        다른 용도로 저장·활용되지 않습니다.
       </p>
-      <p style="margin:6px 0;">본 프로그램은 PC, 모바일, 태블릿 등 어느 환경에서든 사용 가능합니다.<br>
-        다만 <b style="color:#1976d2;">태블릿 사용을 권장</b>합니다.</p>
+
+      <p style="margin:6px 0; font-style:italic; color:#666;">
+        ⚠️ 본 해석 결과는 참고용으로 제공되며, 법적 효력이나 절대적 진실을 보장하지 않습니다.<br>
+        모든 판단과 책임은 이용자 본인에게 있습니다.
+      </p>
+
+      <p style="margin:6px 0;">
+        본 프로그램은 PC, 모바일, 태블릿 등 <b>어느 환경에서든 사용 가능</b>합니다.<br>
+        다만, 화면 크기와 가독성을 고려하여 <b style="color:#1976d2;">태블릿 사용을 권장</b>합니다.
+      </p>
+
       <p style="margin:6px 0; font-size:13px; color:#555;">
-        ✉️ 이용 중 불편사항은
-        <a href="mailto:seoungdo@gmail.com" style="color:#1976d2; text-decoration:none; font-weight:500;">seoungdo@gmail.com</a>으로 문의해 주세요.
+        ✉️ 이용 중 불편사항은 
+        <a href="mailto:seoungdo@gmail.com" style="color:#1976d2; text-decoration:none; font-weight:500;">
+          seoungdo@gmail.com
+        </a> 으로 문의해 주세요.
       </p>
     </div>
   </div>
 
-  <!-- ============================================================ -->
-  <!-- ✅ STEP 1: Firebase API 주소 (가장 먼저 설정)                -->
-  <!-- ============================================================ -->
+  <!-- ✅ Firebase 연동 스크립트 -->
   <script>
-    window.FIREBASE_API = 'https://us-central1-saju-app-bdd75.cloudfunctions.net';
-  </script>
+    // Firebase Functions API 설정
+    const FIREBASE_API = 'https://us-central1-saju-app-bdd75.cloudfunctions.net';
 
-  <!-- ============================================================ -->
-  <!-- ✅ STEP 2: google.script.run → Firebase 변환 shim (직접 내장) -->
-  <!-- ============================================================ -->
-  <script>
-  (function() {
-    'use strict';
-    function getAPI() { return window.FIREBASE_API; }
-    async function callFirebase(funcName, args) {
-      const res = await fetch(getAPI() + '/' + funcName, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ args: args })
-      });
-      if (!res.ok) throw new Error('[' + funcName + '] HTTP ' + res.status);
-      const data = await res.json();
-      return (data && data.result !== undefined) ? data.result : data;
-    }
-    function createRunChain(successCb, failureCb) {
-      const chain = {
-        withSuccessHandler: function(cb) { return createRunChain(cb, failureCb); },
-        withFailureHandler: function(cb) { return createRunChain(successCb, cb); },
-        withUserObject: function() { return chain; }
-      };
-      return new Proxy(chain, {
-        get: function(target, prop) {
-          if (prop in target) return target[prop];
-          return function() {
-            var args = Array.prototype.slice.call(arguments);
-            callFirebase(prop, args)
-              .then(function(r) { if (typeof successCb === 'function') try { successCb(r); } catch(e){} })
-              .catch(function(e) {
-                if (typeof failureCb === 'function') try { failureCb(e); } catch(e2){}
-                else console.error('[shim] ' + prop + ' 오류:', e);
-              });
-          };
-        }
-      });
-    }
-    window.google = { script: {
-      run: new Proxy({}, {
-        get: function(target, prop) {
-          if (prop === 'withSuccessHandler') return function(cb) { return createRunChain(cb, null); };
-          if (prop === 'withFailureHandler') return function(cb) { return createRunChain(null, cb); };
-          return function() { callFirebase(prop, Array.from(arguments)).catch(e => console.error(e)); };
-        }
-      }),
-      history: { push:function(){}, replace:function(){} },
-      host: { close:function(){}, setHeight:function(){}, setWidth:function(){} },
-      url: { getLocation: function(cb){ cb({}); } }
-    }};
-    console.log('[shim] ✅ google.script.run → Firebase 연결 완료');
-  })();
-  </script>
-
-<!-- script_ui.HTML -->
-
-<script>
-const birthPlaceData = {
-  "강원도": ["춘천시", "원주시", "강릉시", "동해시", "태백시", "속초시", "삼척시", "홍천군", "횡성군", "영월군", "평창군", "정선군", "철원군", "화천군", "양구군", "인제군", "고성군", "양양군"],
-  "경기도": ["수원시", "성남시", "고양시", "용인시", "부천시", "안산시", "안양시", "남양주시", "화성시", "평택시", "의정부시", "파주시", "시흥시", "김포시", "광주시", "이천시", "양주시", "구리시", "오산시", "하남시", "여주시", "양평군", "동두천시", "과천시", "가평군", "연천군", "안성시"],
-  "경상남도": ["창원시", "진주시", "통영시", "사천시", "김해시", "밀양시", "거제시", "양산시", "의령군", "함안군", "창녕군", "고성군", "남해군", "하동군", "산청군", "함양군", "거창군", "합천군"],
-  "경상북도": ["포항시", "경주시", "김천시", "안동시", "구미시", "영주시", "영천시", "상주시", "문경시", "경산시", "군위군", "의성군", "청송군", "영양군", "영덕군", "청도군", "고령군", "성주군", "칠곡군", "예천군", "봉화군", "울진군", "울릉군"],
-  "광주광역시": ["동구", "서구", "남구", "북구", "광산구"],
-  "대구광역시": ["중구", "동구", "서구", "남구", "북구", "수성구", "달서구", "달성군"],
-  "대전광역시": ["동구", "중구", "서구", "유성구", "대덕구"],
-  "부산광역시": ["중구", "서구", "동구", "영도구", "부산진구", "동래구", "남구", "북구", "해운대구", "사하구", "금정구", "강서구", "연제구", "수영구", "사상구", "기장군"],
-  "서울특별시": ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구"],
-  "세종특별자치시": ["세종시"],
-  "울산광역시": ["중구", "남구", "동구", "북구", "울주군"],
-  "인천광역시": ["중구", "동구", "미추홀구", "연수구", "남동구", "부평구", "계양구", "서구", "강화군", "옹진군"],
-  "전라남도": ["목포시", "여수시", "순천시", "나주시", "광양시", "담양군", "곡성군", "구례군", "고흥군", "보성군", "화순군", "장흥군", "강진군", "해남군", "영암군", "무안군", "함평군", "영광군", "장성군", "완도군", "진도군", "신안군"],
-  "전라북도": ["전주시", "군산시", "익산시", "정읍시", "남원시", "김제시", "완주군", "진안군", "무주군", "장수군", "임실군", "순창군", "고창군", "부안군"],
-  "제주특별자치도": ["제주시", "서귀포시"],
-  "충청남도": ["천안시", "공주시", "보령시", "아산시", "서산시", "논산시", "계룡시", "당진시", "금산군", "부여군", "서천군", "청양군", "홍성군", "예산군", "태안군"],
-  "충청북도": ["청주시", "충주시", "제천시", "보은군", "옥천군", "영동군", "진천군", "괴산군", "음성군", "단양군", "증평군"],
-};
-
-window.onload = function () {
-  populateSiDropdown();
-
-  // 🌟 클릭 → 비밀번호 확인 → 이름 목록 불러오기
-  const star = document.getElementById("title-star");
-  if (star) {
-    star.addEventListener("click", function () {
-      const pwd = prompt("🔑 비밀번호를 입력하세요:");
-      if (pwd === "6128") {
-        document.getElementById("name-box").style.display = "flex";
-        loadSavedNames(); // ✅ 기존 함수 그대로 호출
-        alert("✅ 주인장 모드: 저장된 이름 목록을 불러왔습니다.");
-      } else if (pwd !== null) {
-        alert("❌ 비밀번호가 올바르지 않습니다.");
-      }
-    });
-  }
-};
-
-
-
-// ▼ 시도 목록을 드롭다운에 자동 삽입
-function populateSiDropdown() {
-  const siSelect = document.getElementById("birth-si");
-  for (const si in birthPlaceData) {
-    const option = document.createElement("option");
-    option.value = si;
-    option.text = si;
-    siSelect.appendChild(option);
-  }
-}
-
-// ▼ 시도 선택 시 해당 구/군 목록 동적 삽입
-function updateGunOptions() {
-  const si = document.getElementById("birth-si").value;
-  const gunSelect = document.getElementById("birth-gun");
-
-  gunSelect.innerHTML = '<option value="">-- 구/군 선택 --</option>';
-
-  if (si && birthPlaceData[si]) {
-    birthPlaceData[si].forEach(gun => {
-      const option = document.createElement("option");
-      option.value = gun;
-      option.text = gun;
-      gunSelect.appendChild(option);
-    });
-  }
-}
-
-
-
-function showAnalysis(type) {
-  const all = ['ohang', 'ilju', 'ganji', 'cheonji', 'jiji'];
-  all.forEach(id => {
-    document.getElementById('analysis-' + id).style.display = 'none';
-  });
-
-  const map = {
-    '오행': 'ohang',
-    '일주': 'ilju',
-    '간지': 'ganji',
-    '천지충합': 'cheonji',
-    '지지충합': 'jiji'
-  };
-  const target = map[type];
-  if (target) {
-    document.getElementById('analysis-' + target).style.display = 'block';
-  }
-}
-
-// 🔹 입력 요소 참조
-const inName = document.getElementById("name");
-const inBirthDate = document.getElementById("birthDate");
-const inLunar = document.getElementById("lunar");
-const inLeapMonth = document.getElementById("leapMonth");
-const inBirthTime = document.getElementById("birthTime");
-const inNoBirthTime = document.getElementById("noBirthTime");
-const inFemale = document.getElementById("female");
-const errorMessage = document.getElementById("error-message");
-
-// 🔹 무시간 선택 시 출생시간 비우기
-inNoBirthTime.addEventListener("change", function () {
-  if (inNoBirthTime.checked) inBirthTime.value = "";
-});
-
-// 🔹 출생시간 입력 시 무시간 체크 해제
-inBirthTime.oninput = function () {
-  inNoBirthTime.checked = false;
-};
-
-// 🔹 에러 표시 함수
-function showError(msg) {
-  errorMessage.textContent = msg;
-  errorMessage.style.display = "block";
-}
-
-// 🔹 에러 제거 함수
-function clearError() {
-  errorMessage.textContent = "";
-  errorMessage.style.display = "none";
-}
-
-// 🔹 입력값 유효성 검증 함수
-function checkInputData() {
-  clearError();
-
-  const nameVal = inName.value.trim();
-  const birthDateVal = inBirthDate.value.trim();
-  const birthTimeVal = inBirthTime.value.trim();
-
-  // 출생지 시도/구군 요소 참조
-  const birthSi = document.getElementById("birth-si").value;
-  const birthGun = document.getElementById("birth-gun").value;
-
-  if (!nameVal) return showError("이름을 입력해주세요.") || false;
-  if (!/^[0-9]{8}$/.test(birthDateVal)) return showError("생년월일은 YYYYMMDD 형식") || false;
-  if (!inNoBirthTime.checked && !/^[0-9]{4}$/.test(birthTimeVal)) {
-    return showError("출생시간은 4자리 숫자로 입력해주세요.") || false;
-  }
-
-  // ✅ 출생지 시도 / 구군 검사 추가
-  if (!birthSi) return showError("출생지 시도를 선택해주세요.") || false;
-  if (!birthGun) return showError("출생지 구/군을 선택해주세요.") || false;
-
-  return true;
-}
-
-
-// 🔹 오행 정의 및 색상 맵
-const ganjiMap = {
-  "갑목": "목", "을목": "목", "인목": "목", "묘목": "목",
-  "병화": "화", "정화": "화", "사화": "화", "오화": "화",
-  "무토": "토", "기토": "토", "진토": "토", "술토": "토", "축토": "토", "미토": "토",
-  "경금": "금", "신금": "금", "유금": "금",
-  "임수": "수", "계수": "수", "자수": "수", "해수": "수"
-};
-
-const ohaengColor = {
-  목: { bg: "#5cb85c", color: "white" },
-  화: { bg: "#d9534f", color: "white" },
-  토: { bg: "#f0ad4e", color: "white" },
-  금: { bg: "#eeeeee", color: "black" },
-  수: { bg: "#222222", color: "white" }
-};
-
-// 🔹 오행 색상 적용 함수
-function setElementColorByOhaeng(id, text) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const ohaeng = ganjiMap[text];
-  if (ohaeng && ohaengColor[ohaeng]) {
-    el.style.backgroundColor = ohaengColor[ohaeng].bg;
-    el.style.color = ohaengColor[ohaeng].color;
-  }
-  el.innerText = text;
-}
-
-
-
-// 🔹 사주 정보 서버 전송 및 결과 표시 함수
-// ✅ 1차 함수: 중복 확인
-function submitToSheet() {
-  if (!checkInputData()) return;
-
-  const nameVal = document.getElementById('name').value.trim();
-
-  // 🔹 먼저 기존 데이터 있는지 확인
-  google.script.run.withSuccessHandler(existing => {
-    if (existing) {
-  document.getElementById("loading-message").style.display = "none"; // 로딩 끄기
-  showError("⚠ 기존 자료가 있습니다. '이름으로 검색'을 클릭하여 확인하세요.");
-  return; // 기존 있으면 중단
-}
-
-
-    // 🔹 기존 없으면 원래 로직 실행
-    const data = {
-      name: document.getElementById('name').value.trim(),
-      이름: document.getElementById('name').value.trim(),
-      gender: document.querySelector('input[name="gender"]:checked')?.value || '',
-      성별: document.querySelector('input[name="gender"]:checked')?.value === '남자' ? '남' : '여',
-      birthDate: document.getElementById('birthDate').value.trim(),
-      생년월일: document.getElementById('birthDate').value.trim(),
-      birthTime: document.getElementById('birthTime').value.trim(),
-      출생시간: document.getElementById('birthTime').value.trim(),
-      lunar: document.getElementById('lunar')?.checked || false,
-      leapMonth: document.getElementById('leapMonth')?.checked || false,
-      birthSi: document.getElementById('birth-si')?.value.trim() || '',
-      birthGun: document.getElementById('birth-gun')?.value.trim() || '',
-      출생지_시: document.getElementById('birth-si')?.value.trim() || '',
-      출생지_구: document.getElementById('birth-gun')?.value.trim() || ''
+    // 출생지 데이터
+    const birthPlaceData = {
+      "강원도": ["춘천시", "원주시", "강릉시", "동해시", "태백시", "속초시", "삼척시", "홍천군", "횡성군", "영월군", "평창군", "정선군", "철원군", "화천군", "양구군", "인제군", "고성군", "양양군"],
+      "경기도": ["수원시", "성남시", "고양시", "용인시", "부천시", "안산시", "안양시", "남양주시", "화성시", "평택시", "의정부시", "파주시", "시흥시", "김포시", "광주시", "이천시", "양주시", "구리시", "오산시", "하남시", "여주시", "양평군", "동두천시", "과천시", "가평군", "연천군", "안성시"],
+      "경상남도": ["창원시", "진주시", "통영시", "사천시", "김해시", "밀양시", "거제시", "양산시", "의령군", "함안군", "창녕군", "고성군", "남해군", "하동군", "산청군", "함양군", "거창군", "합천군"],
+      "경상북도": ["포항시", "경주시", "김천시", "안동시", "구미시", "영주시", "영천시", "상주시", "문경시", "경산시", "군위군", "의성군", "청송군", "영양군", "영덕군", "청도군", "고령군", "성주군", "칠곡군", "예천군", "봉화군", "울진군", "울릉군"],
+      "광주광역시": ["동구", "서구", "남구", "북구", "광산구"],
+      "대구광역시": ["중구", "동구", "서구", "남구", "북구", "수성구", "달서구", "달성군"],
+      "대전광역시": ["동구", "중구", "서구", "유성구", "대덕구"],
+      "부산광역시": ["중구", "서구", "동구", "영도구", "부산진구", "동래구", "남구", "북구", "해운대구", "사하구", "금정구", "강서구", "연제구", "수영구", "사상구", "기장군"],
+      "서울특별시": ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구"],
+      "세종특별자치시": ["세종시"],
+      "울산광역시": ["중구", "남구", "동구", "북구", "울주군"],
+      "인천광역시": ["중구", "동구", "미추홀구", "연수구", "남동구", "부평구", "계양구", "서구", "강화군", "옹진군"],
+      "전라남도": ["목포시", "여수시", "순천시", "나주시", "광양시", "담양군", "곡성군", "구례군", "고흥군", "보성군", "화순군", "장흥군", "강진군", "해남군", "영암군", "무안군", "함평군", "영광군", "장성군", "완도군", "진도군", "신안군"],
+      "전라북도": ["전주시", "군산시", "익산시", "정읍시", "남원시", "김제시", "완주군", "진안군", "무주군", "장수군", "임실군", "순창군", "고창군", "부안군"],
+      "제주특별자치도": ["제주시", "서귀포시"],
+      "충청남도": ["천안시", "공주시", "보령시", "아산시", "서산시", "논산시", "계룡시", "당진시", "금산군", "부여군", "서천군", "청양군", "홍성군", "예산군", "태안군"],
+      "충청북도": ["청주시", "충주시", "제천시", "보은군", "옥천군", "영동군", "진천군", "괴산군", "음성군", "단양군", "증평군"]
     };
 
-    proceedSubmit(data);
-  }).getSavedResultByName(nameVal);  // 📌 SEVER.gs에 이미 있는 함수
-}
-
-
-// ✅ 2차 함수: getFullSaju 단일 엔드포인트 호출
-async function proceedSubmit(data) {
-  document.getElementById("error-message").style.display = "none";
-  document.getElementById("loading-message").style.display = "block";
-
-  const API = window.FIREBASE_API;
-
-  try {
-    // 🔹 getFullSaju: 사주 계산 + 십성 + 운성 + 신강 + 저장을 한번에 처리
-    const res = await fetch(`${API}/getFullSaju`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        birthdate: data.birthDate,
-        birthtime: data.birthTime || '0000',
-        si: data.birthSi,
-        gun: data.birthGun,
-        lunar: data.lunar || false,
-        useLeap: data.leapMonth || false,
-        name: data.name,
-        gender: data.gender
-      })
-    });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      throw new Error(`서버 오류 HTTP ${res.status}: ${errText}`);
-    }
-
-    const json = await res.json();
-    const result = json.result || json;
-
-    if (!result || !result.천간십성) {
-      throw new Error('사주 계산 결과가 없습니다. 입력값을 다시 확인해주세요.');
-    }
-
-    // 🔹 화면에 결과 표시
-    window.latestResult = result;
-    document.getElementById("form-section").style.display = "none";
-    document.getElementById("loading-message").style.display = "none";
-    document.getElementById("result-section").style.display = "block";
-
-    document.getElementById("user-info").textContent =
-      `${data.name} (${data.gender}) / ${data.birthDate.slice(0,4)}년 ${data.birthDate.slice(4,6)}월 ${data.birthDate.slice(6,8)}일 ` +
-      `(${data.lunar ? '음력' : '양력'}) ${data.birthTime.slice(0,2)}:${data.birthTime.slice(2,4)}`;
-
-    ["cg-y","cg-m","cg-d","cg-s"].forEach((id,i)=>document.getElementById(id).textContent=[result.연간,result.월간,result.일간,result.시간][i]);
-    ["jj-y","jj-m","jj-d","jj-s"].forEach((id,i)=>document.getElementById(id).textContent=[result.연지,result.월지,result.일지,result.시지][i]);
-    ["tg-y","tg-m","tg-d","tg-s"].forEach((id,i)=>document.getElementById(id).textContent=result.천간십성[i]);
-    ["tj-y","tj-m","tj-d","tj-s"].forEach((id,i)=>document.getElementById(id).textContent=result.지지십성[i]);
-    ["jg-y","jg-m","jg-d","jg-s"].forEach((id,i)=>document.getElementById(id).textContent=result.지장간문자열[i]);
-    ["jg-y-sib","jg-m-sib","jg-d-sib","jg-s-sib"].forEach((id,i)=>{
-      document.getElementById(id).textContent="("+result.지장간십성문자열[i].split(" ").join(") (")+")";
-    });
-    ["ck-y","ck-m","ck-d","ck-s"].forEach((id,i)=>document.getElementById(id).textContent=result.천간십성격[i]);
-    ["jk-y","jk-m","jk-d","jk-s"].forEach((id,i)=>document.getElementById(id).textContent=result.지지십성격[i]);
-    ["ws-s","ws-d","ws-m","ws-y"].forEach((id,i)=>document.getElementById(id).textContent=result.십이운성[3-i]);
-    ["ws-bong-y","ws-bong-m","ws-bong-d","ws-bong-s"].forEach((id,i)=>document.getElementById(id).textContent=result.십이운성_봉법[i]);
-
-    document.getElementById("cnt-elem").textContent = result.오행개수;
-    document.getElementById("cnt-sib").textContent = result.십성개수;
-    document.getElementById("strength-result").textContent = `${result.신강판정} (${result.신강점수}점)`;
-
-    ["cg-y","cg-m","cg-d","cg-s","jj-y","jj-m","jj-d","jj-s"].forEach(id => {
-      const el = document.getElementById(id);
-      const key = el.textContent.trim();
-      const ohaeng = ganjiMap[key];
-      if (ohaeng && ohaengColor[ohaeng]) {
-        el.style.backgroundColor = ohaengColor[ohaeng].bg;
-        el.style.color = ohaengColor[ohaeng].color;
-      }
-    });
-
-  } catch (err) {
-    document.getElementById("loading-message").style.display = "none";
-    showError("❌ " + err.message);
-    console.error('[proceedSubmit] 오류:', err);
-  }
-}
-
-
-
-// 🔹 해석결과 저장 함수
-function saveResultToSheet() {
-  const latest = window.latestResult;
-  if (!latest || Object.keys(latest).length === 0) {
-    alert("❌ 현재 표시 중인 사주 해석표가 없습니다. 다시 한번 구성해보세요.");
-    return;
-  }
-
-  // ✅ 정확한 키 보완
-  latest["이름"] = inName.value.trim();
-  latest["성별"] = inFemale.checked ? "여자" : "남자";
-
-  google.script.run
-    .withSuccessHandler(() => alert("✅ 해석결과가 저장되었습니다."))
-    .withFailureHandler(e => alert("❌ 저장 실패: " + e.message))
-    .saveLatestResultToSheet(latest["이름"], latest);
-}
-
-
-
-
-
-
-
-
-// 🔹 저장된 해석결과 불러오기 함수
-// 🔹 저장된 해석결과 불러오기 함수
-function loadResultFromSheet() {
-  const nameVal = inName.value.trim();
-  if (!nameVal) return;
-
-  document.getElementById("loading-message").style.display = "block";
-
-  google.script.run
-    .withSuccessHandler(result => {
-      document.getElementById("loading-message").style.display = "none";
-
-      if (!result) {
-        showError("❌ 저장된 해석결과가 없습니다.");
-        return;
-      }
-
-      window.latestResult = result;
-
-      // 기본 UI 전환 및 사용자 정보 표시
-      document.getElementById("form-section").style.display = "none";
-      document.getElementById("result-section").style.display = "block";
-      document.getElementById("user-info").textContent =
-        `${result["이름"]} (${result["성별"]}) / ${result["생년월일"]} ${result["출생시간"]} (${result["음양력"]})`;
-
-      // === 해석결과 표 출력 ===
-
-      // 천간
-      document.getElementById("cg-y").textContent = result["연간"];
-      document.getElementById("cg-m").textContent = result["월간"];
-      document.getElementById("cg-d").textContent = result["일간"];
-      document.getElementById("cg-s").textContent = result["시간"];
-
-      // 지지
-      document.getElementById("jj-y").textContent = result["연지"];
-      document.getElementById("jj-m").textContent = result["월지"];
-      document.getElementById("jj-d").textContent = result["일지"];
-      document.getElementById("jj-s").textContent = result["시지"];
-
-      // 천간 십성
-      document.getElementById("tg-y").textContent = result["십성_연간"];
-      document.getElementById("tg-m").textContent = result["십성_월간"];
-      document.getElementById("tg-d").textContent = result["십성_일간"];
-      document.getElementById("tg-s").textContent = result["십성_시간"];
-
-      // 지지 십성
-      document.getElementById("tj-y").textContent = result["십성_연지"];
-      document.getElementById("tj-m").textContent = result["십성_월지"];
-      document.getElementById("tj-d").textContent = result["십성_일지"];
-      document.getElementById("tj-s").textContent = result["십성_시지"];
-
-      // 천간 성격
-      document.getElementById("ck-y").textContent = result["성격_연간"];
-      document.getElementById("ck-m").textContent = result["성격_월간"];
-      document.getElementById("ck-d").textContent = result["성격_일간"];
-      document.getElementById("ck-s").textContent = result["성격_시간"];
-
-      // 지지 성격
-      document.getElementById("jk-y").textContent = result["성격_연지"];
-      document.getElementById("jk-m").textContent = result["성격_월지"];
-      document.getElementById("jk-d").textContent = result["성격_일지"];
-      document.getElementById("jk-s").textContent = result["성격_시지"];
-
-      // 지장간
-      document.getElementById("jg-y").textContent = result["지장간_연지"];
-      document.getElementById("jg-m").textContent = result["지장간_월지"];
-      document.getElementById("jg-d").textContent = result["지장간_일지"];
-      document.getElementById("jg-s").textContent = result["지장간_시지"];
-
-      // 지장간 십성 (작은 글씨 회색)
-      document.getElementById("jg-y-sib").textContent = "(" + result["지장간십성_연지"].split(" ").join(") (") + ")";
-      document.getElementById("jg-m-sib").textContent = "(" + result["지장간십성_월지"].split(" ").join(") (") + ")";
-      document.getElementById("jg-d-sib").textContent = "(" + result["지장간십성_일지"].split(" ").join(") (") + ")";
-      document.getElementById("jg-s-sib").textContent = "(" + result["지장간십성_시지"].split(" ").join(") (") + ")";
-
-      // 십이운성
-      document.getElementById("ws-y").textContent = result["운성_연주"];
-      document.getElementById("ws-m").textContent = result["운성_월주"];
-      document.getElementById("ws-d").textContent = result["운성_일주"];
-      document.getElementById("ws-s").textContent = result["운성_시주"];
-
-      document.getElementById("ws-bong-y").textContent = result["운성_봉법_연지"];
-      document.getElementById("ws-bong-m").textContent = result["운성_봉법_월지"];
-      document.getElementById("ws-bong-d").textContent = result["운성_봉법_일지"];
-      document.getElementById("ws-bong-s").textContent = result["운성_봉법_시지"];
-
-
-
-      // 오행 / 십성 개수
-      document.getElementById("cnt-elem").textContent = result["오행개수"];
-      document.getElementById("cnt-sib").textContent = result.십성개수;
-      document.getElementById("strength-result").textContent =
-       `${result.신강판정} (${result.신강점수}점)`;
-
-      // 오행 색상 다시 적용
-      ["cg-y", "cg-m", "cg-d", "cg-s", "jj-y", "jj-m", "jj-d", "jj-s"].forEach(id => {
-        const el = document.getElementById(id);
-        const key = el.textContent.trim();
-        const ohaeng = ganjiMap[key];
-        if (ohaeng && ohaengColor[ohaeng]) {
-          el.style.backgroundColor = ohaengColor[ohaeng].bg;
-          el.style.color = ohaengColor[ohaeng].color;
-        }
-      });
-
-    })
-    .withFailureHandler(e => alert("❌ 오류 발생: " + e.message))
-    .getSavedResultByName(nameVal);
-}
-
-// 🔹 저장된 이름 목록 로딩 및 버튼 생성 함수
-function loadSavedNames() {
-  google.script.run.withSuccessHandler(names => {
-    const box = document.getElementById("name-box");
-    box.innerHTML = "";
-    box.style.display = "flex";
-
-    names.forEach(n => {
-      const btn = document.createElement("button");
-      btn.textContent = n;
-      btn.className = "main-button";
-      btn.style.margin = "4px";
-      btn.style.padding = "6px 12px";
-      btn.style.fontSize = "14px";
-      btn.style.width = "auto";
-      btn.onclick = () => {
-        inName.value = n;
-        loadResultFromSheet();
-      };
-      box.appendChild(btn);
-    });
-  }).getSavedNames();
-}
-
-
-
-// 🔹 사용자 검색
-// 🔹 사용자 검색
-function searchResultByName() {
-  const nameVal = document.getElementById("search-name").value.trim();
-  const box = document.getElementById("search-result-box");
-  box.innerHTML = "";
-
-  if (!nameVal) {
-    showError("이름을 입력해 주세요.");
-    return;
-  }
-
-  clearError();
-
-  // ✅ 검색용 문구로 변경
-  const loadingMsg = document.getElementById("loading-message");
-  loadingMsg.innerText = "⏳ 잠시만 기다려주세요";
-  loadingMsg.style.display = "block";
-
-  google.script.run
-    .withSuccessHandler(result => {
-      // ✅ 다시 원래 문구로 되돌려놓기
-      loadingMsg.innerText = "⏳ 사주팔자를 구성 중입니다. 잠시만 기다려주세요";
-      loadingMsg.style.display = "none";
-
-      if (!result) {
-        box.innerHTML = `<p style="color:red;">❌ '${nameVal}'의 자료가 없습니다.<br>사주팔자 자료를 입력하세요.</p>`;
-        return;
-      }
-
-      const btn = document.createElement("button");
-      btn.textContent = result["이름"];
-      btn.className = "sub-button";
-      btn.onclick = () => {
-        inName.value = result["이름"];
-        loadResultFromSheet();
-      };
-      box.appendChild(btn);
-    })
-    .withFailureHandler(e => {
-      // 실패 시에도 원래 문구 복구
-      loadingMsg.innerText = "⏳ 사주팔자를 구성 중입니다. 잠시만 기다려주세요";
-      loadingMsg.style.display = "none";
-      showError("❌ 오류 발생: " + e.message);
-    })
-    .getSavedResultByName(nameVal);
-}
-
-
-
-
-
-</script>
-
-
-  <!-- ============================================================ -->
-  <!-- ✅ STEP 4: 페이지 로드 시 Firebase에서 템플릿 + 스크립트 로드  -->
-  <!-- ============================================================ -->
-  <script>
-  document.addEventListener('DOMContentLoaded', async function() {
-    const API = window.FIREBASE_API;
-
-    // block1, block2를 result-section에 미리 로드 (구조 준비)
-    async function loadTemplate(name, containerId) {
+    // 페이지 로드 시 초기화
+    window.addEventListener('DOMContentLoaded', async () => {
+      showLoading('페이지를 불러오는 중입니다...');
+      
       try {
-        const res = await fetch(API + '/getTemplate?name=' + name);
-        if (res.ok) document.getElementById(containerId).innerHTML = await res.text();
-        else console.warn('[template] ' + name + ' 로드 실패: ' + res.status);
-      } catch(e) { console.error('[template] ' + name + ' 오류:', e); }
+        // 출생지 드롭다운 초기화
+        populateSiDropdown();
+
+        // Firebase에서 템플릿 로드
+        await loadTemplates();
+
+        // 스크립트 로드
+        await loadScripts();
+
+        hideLoading();
+      } catch (error) {
+        console.error('초기화 실패:', error);
+        hideLoading();
+        alert('페이지를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.');
+      }
+    });
+
+    function showLoading(message) {
+      const overlay = document.getElementById('loading-overlay');
+      const status = document.getElementById('loading-status');
+      status.textContent = message;
+      overlay.classList.add('show');
     }
 
-    await loadTemplate('block1', 'block1-container');
-    await loadTemplate('block2', 'block2-container');
+    function hideLoading() {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.remove('show');
+    }
 
-    // 나머지 스크립트들 순차 로드
-    const scripts = [
-      'script_block3', 'script_block3_1', 'script_block3_2', 'script_block3_4',
-      'script_block4', 'script_block4_daewoon', 'script_block4_sewoon',
-      'script_block6', 'script_block7'
-    ];
-
-    for (const name of scripts) {
+    // 템플릿 로드
+    async function loadTemplates() {
       try {
-        const res = await fetch(API + '/getTemplate?name=' + name);
-        if (!res.ok) { console.warn('[script] ' + name + ' 로드 실패'); continue; }
-        const html = await res.text();
-        const div = document.createElement('div');
-        div.innerHTML = html;
+        showLoading('block1 로드 중...');
+        const block1Response = await fetch(`${FIREBASE_API}/getTemplate?name=block1`);
+        if (!block1Response.ok) throw new Error('block1 로드 실패');
+        const block1HTML = await block1Response.text();
+        document.getElementById('block1-container').innerHTML = block1HTML;
 
-        div.querySelectorAll('style').forEach(s => document.head.appendChild(s.cloneNode(true)));
+        showLoading('block2 로드 중...');
+        const block2Response = await fetch(`${FIREBASE_API}/getTemplate?name=block2`);
+        if (!block2Response.ok) throw new Error('block2 로드 실패');
+        const block2HTML = await block2Response.text();
+        document.getElementById('block2-container').innerHTML = block2HTML;
 
-        for (const old of div.querySelectorAll('script')) {
-          await new Promise(resolve => {
-            const s = document.createElement('script');
-            if (old.src) { s.src = old.src; s.onload = resolve; s.onerror = resolve; }
-            else { s.textContent = old.textContent; }
-            document.body.appendChild(s);
-            if (!old.src) resolve();
+        console.log('템플릿 로드 완료');
+      } catch (error) {
+        console.error('템플릿 로드 에러:', error);
+        throw error;
+      }
+    }
+
+    // 스크립트 동적 로드
+    async function loadScripts() {
+      const scripts = [
+        'script_ui',
+        'script_block3',
+        'script_block3_1',
+        'script_block3_2',
+        'script_block3_4',
+        'script_block4',
+        'script_block4_Daewoon',
+        'script_block4_sewoon',
+        'script_block6',
+        'script_block7'
+      ];
+
+      for (const scriptName of scripts) {
+        try {
+          showLoading(`${scriptName} 로드 중...`);
+          const response = await fetch(`${FIREBASE_API}/getTemplate?name=${scriptName}`);
+          if (!response.ok) {
+            console.warn(`${scriptName} 로드 실패 - 계속 진행`);
+            continue;
+          }
+          
+          const scriptHTML = await response.text();
+          
+          const div = document.createElement('div');
+          div.innerHTML = scriptHTML;
+          const scriptTags = div.querySelectorAll('script');
+          
+          scriptTags.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
           });
+          
+          console.log(`${scriptName} 로드 완료`);
+        } catch (error) {
+          console.error(`${scriptName} 로드 에러:`, error);
         }
-        console.log('[script] ✅ ' + name);
-      } catch(e) { console.error('[script] ' + name + ' 오류:', e); }
+      }
     }
-    console.log('✅ 모든 스크립트 로드 완료');
-  });
-  </script>
 
+    // 출생지 드롭다운 초기화
+    function populateSiDropdown() {
+      const siSelect = document.getElementById("birth-si");
+      for (const si in birthPlaceData) {
+        const option = document.createElement("option");
+        option.value = si;
+        option.text = si;
+        siSelect.appendChild(option);
+      }
+    }
+
+    // 구/군 옵션 업데이트
+    function updateGunOptions() {
+      const si = document.getElementById("birth-si").value;
+      const gunSelect = document.getElementById("birth-gun");
+
+      gunSelect.innerHTML = '<option value="">-- 구/군 선택 --</option>';
+
+      if (si && birthPlaceData[si]) {
+        birthPlaceData[si].forEach(gun => {
+          const option = document.createElement("option");
+          option.value = gun;
+          option.text = gun;
+          gunSelect.appendChild(option);
+        });
+      }
+    }
+
+    // 사주 계산 함수
+    async function submitToSheet() {
+      const name = document.getElementById("name").value.trim();
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+      const birthDate = document.getElementById("birthDate").value.trim();
+      const birthTime = document.getElementById("birthTime").value.trim();
+      const si = document.getElementById("birth-si").value;
+      const gun = document.getElementById("birth-gun").value;
+
+      // 유효성 검사
+      if (!name || !birthDate || !birthTime || !si || !gun) {
+        alert("모든 항목을 입력해주세요.");
+        return;
+      }
+
+      if (birthDate.length !== 8 || isNaN(birthDate)) {
+        alert("생년월일은 8자리 숫자로 입력해주세요. (예: 19900115)");
+        return;
+      }
+
+      if (birthTime.length !== 4 || isNaN(birthTime)) {
+        alert("출생시간은 4자리 숫자로 입력해주세요. (예: 1430)");
+        return;
+      }
+
+      // 로딩 표시
+      document.getElementById("loading-message").style.display = "block";
+      document.getElementById("error-message").style.display = "none";
+
+      try {
+        const formData = {
+          name: name,
+          gender: gender,
+          birthdate: birthDate,
+          birthtime: birthTime,
+          lunar: false,
+          si: si,
+          gun: gun
+        };
+
+        const response = await fetch(`${FIREBASE_API}/calculateSaju`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // 결과 표시
+          displayResult(result);
+          
+          // 결과 섹션 표시
+          document.getElementById("form-section").style.display = "none";
+          document.getElementById("result-section").style.display = "block";
+        } else {
+          throw new Error(result.error || '사주 계산에 실패했습니다.');
+        }
+
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById("error-message").textContent = 
+          '오류가 발생했습니다: ' + error.message;
+        document.getElementById("error-message").style.display = "block";
+      } finally {
+        document.getElementById("loading-message").style.display = "none";
+      }
+    }
+
+    // 결과 표시 함수 (스크립트에서 정의될 것임)
+    function displayResult(result) {
+      // 이 함수는 로드된 스크립트에서 정의됩니다
+      if (typeof window.displaySajuResult === 'function') {
+        window.displaySajuResult(result);
+      } else {
+        console.log('사주 결과:', result);
+      }
+    }
+
+    // 이름으로 검색 (일반 사용자용 - 비밀번호 불필요)
+    async function searchResultByName() {
+      const searchName = document.getElementById("search-name").value.trim();
+      
+      if (!searchName) {
+        alert("이름을 입력해주세요.");
+        return;
+      }
+
+      try {
+        // 일반 사용자는 비밀번호 없이 검색 (Firebase에서 제한 없이 허용)
+        const response = await fetch(
+          `${FIREBASE_API}/searchPublic?name=${encodeURIComponent(searchName)}`
+        );
+        const data = await response.json();
+
+        if (data.success && data.result) {
+          displayResult(data.result);
+          document.getElementById("form-section").style.display = "none";
+          document.getElementById("result-section").style.display = "block";
+        } else {
+          alert("해당 이름의 자료가 없습니다.");
+        }
+      } catch (error) {
+        console.error('검색 에러:', error);
+        alert("검색 중 오류가 발생했습니다.");
+      }
+    }
+
+    // 저장된 결과 로드
+    async function loadSavedResult(name) {
+      document.getElementById("search-name").value = name;
+      await searchResultByName();
+    }
+
+    // 🌟 클릭 이벤트 (관리자 모드)
+    setTimeout(() => {
+      const star = document.getElementById("title-star");
+      if (star) {
+        star.addEventListener("click", async function () {
+          const pwd = prompt("🔑 비밀번호를 입력하세요:");
+          if (pwd) {
+            // Firebase에서 비밀번호 검증
+            try {
+              const response = await fetch(`${FIREBASE_API}/getSavedNames?password=${encodeURIComponent(pwd)}`);
+              const data = await response.json();
+              
+              if (data.success) {
+                document.getElementById("name-box").style.display = "flex";
+                displaySavedNames(data.names);
+                alert("✅ 주인장 모드: 저장된 이름 목록을 불러왔습니다.");
+              } else {
+                alert("❌ 비밀번호가 올바르지 않습니다.");
+              }
+            } catch (error) {
+              alert("❌ 인증에 실패했습니다.");
+            }
+          }
+        });
+      }
+    }, 1000);
+
+    // 저장된 이름 표시
+    function displaySavedNames(names) {
+      const nameBox = document.getElementById("name-box");
+      nameBox.innerHTML = '';
+
+      if (names && names.length > 0) {
+        names.forEach(name => {
+          const btn = document.createElement("button");
+          btn.className = "small-button";
+          btn.style.cssText = "padding: 6px 12px; font-size: 14px; border-radius: 6px; background-color: #007bff; color: white; border: none; cursor: pointer; margin: 4px;";
+          btn.textContent = name;
+          btn.onclick = () => loadSavedResult(name);
+          nameBox.appendChild(btn);
+        });
+      }
+    }
+  </script>
 </body>
 </html>
